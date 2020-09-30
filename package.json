@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "module": "commonjs",
-  "homepage": "https://egor18032019.github.io/planingWorkSpace",
+  "homepage": "https://egor18032019.github.io/PlaningWorkSpaceOnOffice/",
   "description": "Личный проект для планирования рабочих мест",
   "scripts": {
     "build": "webpack --mode production",
