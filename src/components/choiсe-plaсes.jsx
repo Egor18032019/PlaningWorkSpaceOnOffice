@@ -20,7 +20,7 @@ class ChoicePlaces extends PureComponent {
           <option value="Ekaterinburg 801">Екатеринбург 8 этаж</option>
           <option value="Ekaterinburg 901">Екатеринбург 9 этаж</option>
           <option value="Ryazan">Рязань</option>
-          <option value="Samara">Самара</option>
+          <option value="Samara">Самара офис №</option>
         </select>
         <button> Выбрать офис</button>
       </form>
@@ -31,6 +31,8 @@ class ChoicePlaces extends PureComponent {
     const {onChoiseOfficeClick} = this.props;
     evt.preventDefault();
     onChoiseOfficeClick(this.menuRef.current.value);
+    console.log(`ddd`);
+
   }
 
 }

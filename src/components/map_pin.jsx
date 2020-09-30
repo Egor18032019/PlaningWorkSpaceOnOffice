@@ -34,7 +34,8 @@ const MapPin = (props) => {
           coordX = Math.max((pinWidth / 3), Math.min(coordX, (rect.width - pinWidth)));
         }
         let coordY = evt.clientY - rect.top;
-        if ((coordY < 248) || (coordY > 690)) {
+        console.log(coordY);
+        if ((coordY < 111) || (coordY > 690)) {
           setupDialogElement.onmousemove = null;
           pinRef.current.onmouseup = null;
           coordY = Math.max(252, Math.min(coordY, 690));
