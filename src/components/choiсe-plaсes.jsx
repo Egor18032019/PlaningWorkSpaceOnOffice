@@ -31,8 +31,6 @@ class ChoicePlaces extends PureComponent {
     const {onChoiseOfficeClick} = this.props;
     evt.preventDefault();
     onChoiseOfficeClick(this.menuRef.current.value);
-    console.log(`ddd`);
-
   }
 
 }
