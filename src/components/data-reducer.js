@@ -1,18 +1,24 @@
-import {
-  workedPlaceOnOffice
-} from "../const.js";
+// import {
+//   workedPlaceOnOffice
+// } from "../const.js";
 
 import {
-  onSortPins
+  onSortPins,
+  adapter
 } from "../utils.js";
+import {
+  onLoadForm
+} from "../components/backend.js";
 
 // Определяем действия(actions)
 const ActionType = {
   ADD_PLACE: `CHANGE_OFFICE`,
   ACTIVE_PLACE: `ACTIVE_PLACE`,
   GET_OFFERS: `GET_OFFERS`,
+  GET_OFFICE: `GET_OFFiCE`,
   FILTER_OFFERS: `FILTER_OFFERS`,
   GET_OFFERS_FAIL: `GET_OFFERS_FAIL`,
+  GET_SERVER_STATUS: `GET_SERVER_STATUS`,
 };
 
 
@@ -22,17 +28,35 @@ const initialState = {
   office: null,
   places: [],
   popup: null,
-  originalPlaces: []
+  originalPlaces: [],
+  isDataLoaded: false,
+  errorMessage: ``,
 };
+
+// запрос на сервер
+const Operation = {
+  loadDataAsync: (place) => (dispatch) => {
+    return onLoadForm(place).then((response) => {
+      const data = adapter(response);
+      dispatch(ActionActive.getDataOffers(data));
+      dispatch(ActionActive.activeState(place));
+      dispatch(setIdDataLoaded(true, ``));
+    });
+  }
+};
+
 
 const dataReducer = (state = initialState, action) => {
   switch (action.type) {
     case ActionType.GET_OFFERS:
       return Object.assign({}, state, {
+        originalPlaces: action.payload,
+        places: action.payload
+      });
+    case ActionType.GET_OFFICE:
+      return Object.assign({}, state, {
         page: `officePage`,
         office: action.office,
-        originalPlaces: workedPlaceOnOffice[action.office],
-        places: workedPlaceOnOffice[action.office]
       });
     case ActionType.GET_OFFERS_FAIL:
       return Object.assign({}, state, {
@@ -69,6 +93,11 @@ const dataReducer = (state = initialState, action) => {
       return Object.assign({}, state, {
         places: filterPlaces
       });
+    case ActionType.GET_SERVER_STATUS:
+      return Object.assign({}, state, {
+        isDataLoaded: action.isDataLoaded,
+        errorMessage: action.errorMessage
+      });
   }
   return state;
 };
@@ -76,8 +105,12 @@ const dataReducer = (state = initialState, action) => {
 
 const ActionActive = {
   activeState: (place) => ({
-    type: ActionType.GET_OFFERS, // обязательно поле type
+    type: ActionType.GET_OFFICE, // обязательно поле type
     office: place
+  }),
+  getDataOffers: (data) => ({
+    type: ActionType.GET_OFFERS, // обязательно поле type
+    payload: data
   }),
   activeNewState: (newDataObj) => ({
     type: ActionType.GET_OFFERS_FAIL, // обязательно поле type
@@ -100,10 +133,24 @@ const ActionPlace = {
   }),
 };
 
+/**
+ * @param {status} status bool-ево значение.
+ * @param {err} err ошибка.
+ * @return{isDataLoaded} статус загрузки(позже за диспатчим его в загрузчик(по другому не придумал))
+ */
+const setIdDataLoaded = (status, err) => {
+  return {
+    type: ActionType.GET_SERVER_STATUS,
+    isDataLoaded: status,
+    errorMessage: err
+  };
+};
 
 export {
   dataReducer,
   ActionType,
   ActionActive,
   ActionPlace,
+  Operation,
+  setIdDataLoaded
 };

@@ -2,7 +2,6 @@
 import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
 
-
 class ChoicePlaces extends PureComponent {
   constructor(props) {
     super(props);
