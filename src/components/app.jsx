@@ -2,7 +2,7 @@ import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
 import {Switch, Route, BrowserRouter} from "react-router-dom";
 import {connect} from "react-redux";
-import {ActionActive, ActionPlace} from "./data-reducer.js";
+import {ActionActive, ActionPlace, Operation} from "./data-reducer.js";
 import {getActiveOffice, getActivePage, getPopup, getPlaces} from "./selectors.js";
 import Main from "./main.tsx";
 import withMain from "./whit-main";
@@ -70,7 +70,7 @@ class App extends PureComponent {
 
 const mapDispatchToTitle = (dispatch) => ({
   handlerClickOnChoise(place) {
-    dispatch(ActionActive.activeState(place));
+    dispatch(Operation.loadDataAsync(place));
   },
   getNewData(newDataObj) {
     dispatch(ActionActive.activeNewState(newDataObj));
