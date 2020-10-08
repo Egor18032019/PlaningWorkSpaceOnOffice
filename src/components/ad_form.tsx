@@ -1,6 +1,8 @@
 // import React, {PureComponent, React.createRef} from "react";
 import * as React from "react";
+
 import { AdFormProps } from "../types";
+import { onSave } from "../components/backend.js";
 
 interface State {
   avatar: number | null,
@@ -59,6 +61,7 @@ class AdForm extends React.PureComponent<AdFormProps, State> {
   handleSubmit(evt) {
     const { handlerSubmitForAdd, coordinateX, coordinateY } = this.props;
     evt.preventDefault();
+    onSave();
     handlerSubmitForAdd(
       {
         id: this.idRef.current.value,

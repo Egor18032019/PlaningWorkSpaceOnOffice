@@ -80,5 +80,5 @@ const adapter = function (data) {
 
 export {
   onSortPins,
-  adapter
+  adapter,
 };

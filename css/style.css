@@ -106,7 +106,6 @@ fieldset {
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center bottom;
-
 }
 
 .map__overlay {
@@ -154,6 +153,7 @@ fieldset {
   border: 0;
   background: none;
   cursor: pointer;
+  font-size: 13px;
 }
 
 .map__pin:focus {
@@ -1099,11 +1099,11 @@ a.btn-primary:focus {
 .menu {
   position: absolute;
   z-index: 2;
-  top: 150px;
+  top: 50px;
   right: 20px;
 
-  padding: 10px 10px 20px;
-  width: 300px;
+  padding: 5px 5px 10px;
+  width: 225px;
 
   font-size: 12px;
 

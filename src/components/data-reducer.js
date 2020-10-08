@@ -7,7 +7,7 @@ import {
   adapter
 } from "../utils.js";
 import {
-  onLoadForm
+  onLoadForm,
 } from "../components/backend.js";
 
 // Определяем действия(actions)
@@ -79,6 +79,7 @@ const dataReducer = (state = initialState, action) => {
       } else {
         stateDataRewriteArray.push(newPlace);
       }
+
       return Object.assign({}, state, {
         places: stateDataRewriteArray
       });
