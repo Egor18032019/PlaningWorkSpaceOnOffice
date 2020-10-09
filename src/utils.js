@@ -31,6 +31,17 @@ const forSpaceFilter = (place, filter) => {
   return place;
 };
 
+/**
+ * Поиск по ФИО
+ * @param {array} places массив с данными
+ * @param {string} filter
+ * @return {array}
+ */
+const forTitleFilter = (places, filter) => {
+  return places.filter((place) => {
+    return place.titlle === filter || filter === false;
+  });
+};
 
 // TODO: сделать тест на функцию сортировки
 
@@ -81,4 +92,5 @@ const adapter = function (data) {
 export {
   onSortPins,
   adapter,
+  forTitleFilter
 };

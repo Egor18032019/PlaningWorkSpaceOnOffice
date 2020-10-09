@@ -11,7 +11,8 @@ import ChoicePlaces from "./choiсe-plaсes.jsx";
 import CSVDowland from "./csv_button.jsx";
 import RightMenu from "./right_menu.jsx";
 import { MainProps } from "../types";
-
+import withMenuItem from "./whit_menu_item.jsx";
+const MenuItemWrapper = withMenuItem(RightMenu);
 
 const Main = (props: MainProps) => {
 
@@ -43,7 +44,8 @@ const Main = (props: MainProps) => {
           onPinClick={onPinClick}
         />
         : ``}
-      {isActive ?  <RightMenu
+      {isActive ?
+      <MenuItemWrapper
         places={places}
         onPinClick={onPinClick}
       />: ``}
