@@ -2,7 +2,8 @@
 
 
 let URL = {
-  POST: ``,
+  POST: `https://sheets.googleapis.com/v4/spreadsheets/AIzaSyACvURZ36YS0q1lcePVxO13mLWuu02uq6g/values:batchUpdate`,
+  // POST: `https://script.google.com/macros/s/AKfycby_hcQQ99DAAm1y7E8pZyKHc_OBu0spx94LPorq3m60qhrdPtcR/exec`,
   GET801: `https://script.google.com/macros/s/AKfycby_hcQQ99DAAm1y7E8pZyKHc_OBu0spx94LPorq3m60qhrdPtcR/exec`,
   GET901: `https://script.google.com/macros/s/AKfycbxlU4-ran0HBA9kFVPT0uh_xxZgHJU2PipOHWVZhcEJEJThaZuK/exec`
 };
@@ -46,6 +47,11 @@ const onLoadForm = (place) => {
     xhr.send();
   });
 };
+
+//  ----------------
+
+// отправка данных в гугол таблицу =  не смог *(
+
 
 export {
   onLoadForm,
