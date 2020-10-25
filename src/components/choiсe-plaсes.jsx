@@ -1,39 +1,29 @@
 // компонент "Карточка предложения"
-import React, {PureComponent} from "react";
+import React, {useRef} from "react";
 import PropTypes from "prop-types";
 
-class ChoicePlaces extends PureComponent {
-  constructor(props) {
-    super(props);
-
-    this.menuRef = React.createRef();
-    // не придумал как вынести это в hoc === оставил тут
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
-
-  render() {
-    return (
-      <form action="#" className="map__filters" autoComplete="off"
-        onSubmit={this.handleSubmit}>
-        <select name="choise-space" id="choise" className="map__choise" defaultValue="Ekaterinburg 801" ref={this.menuRef}>
-          <option value="Ekaterinburg 801">Екатеринбург 8 этаж 801-802</option>
-          <option value="Ekaterinburg 801">Екатеринбург 8 этаж 803-804(в процессе)</option>
-          <option value="Ekaterinburg 901">Екатеринбург 9 этаж</option>
-          <option value="Ryazan">Рязань</option>
-          <option value="Samara">Самара офис №</option>
-        </select>
-        <button> Выбрать офис</button>
-      </form>
-    );
-  }
-
-  handleSubmit(evt) {
-    const {onChoiseOfficeClick} = this.props;
+const ChoicePlaces = (props) => {
+  const menuRef = useRef();
+  const handleSubmit = (evt)=> {
+    const {onChoiseOfficeClick} = props;
     evt.preventDefault();
-    onChoiseOfficeClick(this.menuRef.current.value);
-  }
+    onChoiseOfficeClick(menuRef.current.value);
+  };
 
-}
+  return (
+    <form action="#" className="map__filters" autoComplete="off"
+      onSubmit={handleSubmit}>
+      <select name="choise-space" id="choise" className="map__choise" defaultValue="Ekaterinburg 801" ref={menuRef}>
+        <option value="Ekaterinburg 801">Екатеринбург 8 этаж 801-802</option>
+        <option value="Ekaterinburg 803-816">Екатеринбург 8 этаж 803-816(в процессе)</option>
+        <option value="Ekaterinburg 901">Екатеринбург 9 этаж</option>
+        <option value="Ryazan">Рязань</option>
+        <option value="Samara">Самара офис №</option>
+      </select>
+      <button> Выбрать офис</button>
+    </form>
+  );
+};
 
 ChoicePlaces.propTypes = {
   onChoiseOfficeClick: PropTypes.func.isRequired,

@@ -1,11 +1,17 @@
 // Получение  данных c гугол форм
 
 
-let URL = {
+const URL = {
   POST: `https://sheets.googleapis.com/v4/spreadsheets/AIzaSyACvURZ36YS0q1lcePVxO13mLWuu02uq6g/values:batchUpdate`,
   // POST: `https://script.google.com/macros/s/AKfycby_hcQQ99DAAm1y7E8pZyKHc_OBu0spx94LPorq3m60qhrdPtcR/exec`,
-  GET801: `https://script.google.com/macros/s/AKfycby_hcQQ99DAAm1y7E8pZyKHc_OBu0spx94LPorq3m60qhrdPtcR/exec`,
-  GET901: `https://script.google.com/macros/s/AKfycbxlU4-ran0HBA9kFVPT0uh_xxZgHJU2PipOHWVZhcEJEJThaZuK/exec`
+};
+
+const URLGET = {
+  "Ekaterinburg 801": `https://script.google.com/macros/s/AKfycby_hcQQ99DAAm1y7E8pZyKHc_OBu0spx94LPorq3m60qhrdPtcR/exec`,
+  "Ekaterinburg 901": `https://script.google.com/macros/s/AKfycbxlU4-ran0HBA9kFVPT0uh_xxZgHJU2PipOHWVZhcEJEJThaZuK/exec`,
+  "Ekaterinburg 803-816": ``,
+  "Ryazan": ``,
+  "Samara": ``,
 };
 
 /**
@@ -18,13 +24,7 @@ const StatusCode = {
 
 const onLoadForm = (place) => {
   // console.log(place);
-  let loadUrl = ``;
-  if (place === `Ekaterinburg 901`) {
-    loadUrl = URL.GET901;
-  }
-  if (place === `Ekaterinburg 801`) {
-    loadUrl = URL.GET801;
-  }
+  let loadUrl = URLGET[place];
 
   return new Promise(function (resolve, reject) {
 
