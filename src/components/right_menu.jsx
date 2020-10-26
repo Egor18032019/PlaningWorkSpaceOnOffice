@@ -1,47 +1,41 @@
-import React, {PureComponent, createRef} from "react";
+import React, {useRef} from "react";
 import PropTypes from "prop-types";
 
 import MenuItem from "./menu-item.jsx";
 
 // Меню ФИО
 
-class RightMenu extends PureComponent {
-  constructor(props) {
-    super(props);
-    this.textRef = createRef();
-    this.onChange = this.onChange.bind(this);
-  }
+const RightMenu = (props)=>{
 
-  onChange() {
-    const {handleFilterMenu} = this.props;
-    handleFilterMenu(this.textRef);
-  }
+  const textRef = useRef();
 
-  render() {
-    const {places, onPinClick, filterPlaces} = this.props;
-    return (
-      <article className="menu">
-        <p className="menu-text">Список ФИО И № р.м.</p>
+  const onChange = ()=> {
+    const {handleFilterMenu} = props;
+    handleFilterMenu(textRef);
+  };
 
-        <input type="text" placeholder="Искать здесь" name="t" ref={this.textRef} onChange={this.onChange} />
-        <ul className="menu-list">
-          {filterPlaces.map(
-              (place) => {
-                return (
-                  <MenuItem
-                    place={place}
-                    onPinClick={onPinClick}
-                    key={place.id + place.titlle}
-                  />
-                );
-              })}
-        </ul>
-        <b>Итого {places.length} рабочих мест</b>
-      </article>
-    );
-  }
-}
+  const {places, onPinClick, filterPlaces} = props;
+  return (
+    <article className="menu">
+      <p className="menu-text">Список ФИО И № р.м.</p>
 
+      <input type="text" placeholder="Искать здесь" name="t" ref={textRef} onChange={onChange} />
+      <ul className="menu-list">
+        {filterPlaces.map(
+            (place) => {
+              return (
+                <MenuItem
+                  place={place}
+                  onPinClick={onPinClick}
+                  key={place.id + place.titlle}
+                />
+              );
+            })}
+      </ul>
+      <b>Итого {places.length} рабочих мест</b>
+    </article>
+  );
+};
 
 RightMenu.propTypes = {
   places: PropTypes.array.isRequired,

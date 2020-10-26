@@ -62,29 +62,31 @@ const onSortPins = (data, filter) => {
 
 const adapter = function (data) {
   let result = [];
-  let dataArray = data.result;
-  for (let i = 0; i < dataArray.length; i++) {
-    let nextArray = dataArray[i];
-    let adapterArray = {
-      id: nextArray[0],
-      titlle: nextArray[1],
-      company: nextArray[2],
-      departmens: nextArray[3],
-      otdel: nextArray[4],
-      gender: nextArray[5],
-      coordinateX: nextArray[6],
-      coordinateY: nextArray[7],
-      avatar: nextArray[8],
-      timein: nextArray[9],
-      timeout: nextArray[10],
-      description: nextArray[11],
-      photo: nextArray[12],
-      notebook: nextArray[13],
-      apllebook: nextArray[14],
-      sistemnik: nextArray[15],
-      telephone: nextArray[16],
-    };
-    result.push(adapterArray);
+  if (data) {
+    let dataArray = data.result;
+    for (let i = 0; i < dataArray.length; i++) {
+      let nextArray = dataArray[i];
+      let adapterArray = {
+        id: nextArray[0],
+        titlle: nextArray[1],
+        company: nextArray[2],
+        departmens: nextArray[3],
+        otdel: nextArray[4],
+        gender: nextArray[5],
+        coordinateX: nextArray[6],
+        coordinateY: nextArray[7],
+        avatar: nextArray[8],
+        timein: nextArray[9],
+        timeout: nextArray[10],
+        description: nextArray[11],
+        photo: nextArray[12],
+        notebook: nextArray[13],
+        apllebook: nextArray[14],
+        sistemnik: nextArray[15],
+        telephone: nextArray[16],
+      };
+      result.push(adapterArray);
+    }
   }
   return result;
 };

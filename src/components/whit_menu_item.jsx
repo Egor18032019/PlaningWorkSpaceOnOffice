@@ -7,7 +7,7 @@ const withMenuItem = (Component) => {
     constructor(props) {
       super(props);
       this.state = {
-        filterPlaces: props.places
+        filterPlaces: this.props.places
       };
       this.handleFilterMenu = this.handleFilterMenu.bind(this);
     }
@@ -16,7 +16,7 @@ const withMenuItem = (Component) => {
       const {places} = this.props;
       let filter;
       let filterPlaces = places;
-      if (ref.current !== null) {
+      if (ref.current.value !== ``) {
         filter = ref.current.value;
         filterPlaces = forTitleFilter(places, filter);
       }
@@ -35,6 +35,11 @@ const withMenuItem = (Component) => {
         >
         </Component>
       );
+    }
+    componentDidMount() {
+    }
+    componentDidUpdate() {
+      this.setState({filterPlaces: this.props.places});
     }
   }
   WithMain.propTypes = {
