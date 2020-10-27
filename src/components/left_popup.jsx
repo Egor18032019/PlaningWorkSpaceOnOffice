@@ -100,6 +100,7 @@ class LeftPopup extends PureComponent {
                 <option value="ДФК">ДФК</option>
                 <option value="Сеть">Сеть</option>
                 <option value="Корус">Корус</option>
+                <option value="ПОС">ПОС</option>
               </select>
             </fieldset>
             <fieldset className="popup-form__element" disabled={!isActive} title="Переезд или Остаёться">
