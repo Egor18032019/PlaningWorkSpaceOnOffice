@@ -170,8 +170,8 @@ class AdForm extends React.PureComponent<AdFormProps, State> {
           <label className="ad-form__label" htmlFor="type">Тип организации</label>
           <select id="type" name="type" defaultValue="выбрать" ref={this.type}>
             <option value="выбрать">не выбрано</option>
-            <option value="ПАО">ПАО</option>
-            <option value="АО">АО</option>
+            <option value="Темные">Темные</option>
+            <option value="Светлые">Светлые</option>
             <option value="Подрядчики">Подрядчики</option>
           </select>
         </fieldset>
@@ -179,9 +179,11 @@ class AdForm extends React.PureComponent<AdFormProps, State> {
           <label className="ad-form__label" htmlFor="departmens">Департамент</label>
           <select id="departmens" name="departmens" defaultValue="выбрать" ref={this.departmens}>
             <option value="выбрать">не выбрано</option>
-            <option value="Операционный">Операционный</option>
-            <option value="Разработчики">Разработчики</option>
-            <option value="Подрядчики">Подрядчики</option>
+            <option value="Главный">Главный</option>
+            <option value="РБ">РБ</option>
+            <option value="ДФК">ДФК</option>
+            <option value="Сеть">Сеть</option>
+            <option value="Корус">Корус</option>
           </select>
         </fieldset>
         <fieldset className="ad-form__element ad-form__element--time">
@@ -198,14 +200,11 @@ class AdForm extends React.PureComponent<AdFormProps, State> {
           </select>
         </fieldset>
         <fieldset className="ad-form__element">
-          <label className="ad-form__label" htmlFor="otdel">Отдел</label>
+          <label className="ad-form__label" htmlFor="otdel">Переезд/Остаётся</label>
           <select id="otdel" name="otdel" defaultValue="выбрать" ref={this.otdel}>
             <option value="выбрать">не выбрано</option>
-            <option value="АХО">АХО</option>
-            <option value="Разработка">Разработка</option>
-            <option value="Подрядчики" >Подрядчики</option>
-            <option value="Тестирование">Тестирование</option>
-            <option value="Аналитики">Аналитики</option>
+            <option value="Переезд">Переезд</option>
+            <option value="Остаётся">Остаётся</option>
           </select>
         </fieldset>
         <fieldset className="ad-form__element">

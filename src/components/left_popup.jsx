@@ -44,7 +44,7 @@ class LeftPopup extends PureComponent {
 
   render() {
     const {activePlace, isActive} = this.props;
-
+    // console.log(activePlace);
     if (activePlace) {
       const {id, titlle, departmens, otdel, timein, timeout, description, photo, avatar, company,
         telephone, sistemnik, apllebook, notebook} = activePlace;
@@ -78,14 +78,14 @@ class LeftPopup extends PureComponent {
               <input id="address" name="address" type="text"
                 value={`Рабочее место № ` + id} ref={this.idRef} readOnly />
             </fieldset>
-            <fieldset className="popup-form__element" disabled={!isActive} ref={this.fieldsetType}>
+            <fieldset className="popup-form__element" disabled={!isActive} ref={this.fieldsetType} title="Компания">
               <select id="company" name="company" value={company} ref={this.type} className="select-css"
                 onChange={(evt) => {
                   this.handleChange(evt, evt.target.value);
                 }} >
-                <option value="выбрать">не выбрано</option>
-                <option value="ПАО">ПАО</option>
-                <option value="АО">АО</option>
+                <option value="any">не выбрано</option>
+                <option value="Темные">Темные</option>
+                <option value="Светлые">Светлые</option>
                 <option value="Подрядчики">Подрядчики</option>
               </select>
             </fieldset>
@@ -95,22 +95,21 @@ class LeftPopup extends PureComponent {
                   this.handleChange(evt, evt.target.value);
                 }}>
                 <option value="выбрать">не выбрано</option>
-                <option value="Операционный">Операционный</option>
-                <option value="Разработчики">Разработчики</option>
-                <option value="Подрядчики">Подрядчики</option>
+                <option value="Главный">Главный</option>
+                <option value="РБ">РБ</option>
+                <option value="ДФК">ДФК</option>
+                <option value="Сеть">Сеть</option>
+                <option value="Корус">Корус</option>
               </select>
             </fieldset>
-            <fieldset className="popup-form__element" disabled={!isActive}>
+            <fieldset className="popup-form__element" disabled={!isActive} title="Переезд или Остаёться">
               <select id="otdel" name="otdel" value={otdel} ref={this.otdel} className="select-css"
                 onChange={(evt) => {
                   this.handleChange(evt, evt.target.value);
                 }}>
                 <option value="выбрать">не выбрано</option>
-                <option value="АХО">АХО</option>
-                <option value="Разработка">Разработка</option>
-                <option value="Подрядчики" >Подрядчики</option>
-                <option value="Тестирование">Тестирование</option>
-                <option value="Аналитики">Аналитики</option>
+                <option value="Переезд">Переезд</option>
+                <option value="Остаётся">Остаётся</option>
               </select>
             </fieldset>
             <fieldset className="popup-form__element popup-form__element--time" disabled={!isActive}>

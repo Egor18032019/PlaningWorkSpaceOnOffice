@@ -17,8 +17,11 @@ const withMenuItem = (Component) => {
       let filter;
       let filterPlaces = places;
       if (ref.current.value !== ``) {
+
         filter = ref.current.value;
         filterPlaces = forTitleFilter(places, filter);
+        console.log(filterPlaces);
+
       }
       this.setState({filterPlaces});
     }
@@ -38,8 +41,10 @@ const withMenuItem = (Component) => {
     }
     componentDidMount() {
     }
-    componentDidUpdate() {
-      this.setState({filterPlaces: this.props.places});
+    componentDidUpdate(prevProps) {
+      if (this.props !== prevProps) {
+        this.setState({filterPlaces: this.props.places});
+      }
     }
   }
   WithMain.propTypes = {
