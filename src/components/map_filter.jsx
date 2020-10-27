@@ -52,25 +52,27 @@ class MapFilter extends PureComponent {
             ref={this.companyRef}
             onChange={this.handleFilter}>
             <option value="any">Тип организации</option>
-            <option value="ПАО">ПАО</option>
-            <option value="АО">АО</option>
-            <option value="Подряд">Подряд</option>
+            <option value="Темные">Темные</option>
+            <option value="Светлые">Светлые</option>
+            <option value="Подрядчики">Подрядчики</option>
           </select>
           <select name="type-departmens" id="type-departmens" className="map__filter" defaultValue="any"
             ref={this.departmensRef}
             onChange={this.handleFilter}>
             <option value="any">Фильтр по департаменту</option>
-            <option value="Операционный">Операционный</option>
-            <option value="Разработчики">Разработчики</option>
-            <option value="Подрядчики">Подрядчики</option>
+            <option value="Главный">Главный</option>
+            <option value="РБ">РБ</option>
+            <option value="ДФК">ДФК</option>
+            <option value="Сеть">Сеть</option>
+            <option value="Корус">Корус</option>
+            <option value="ПОС">ПОС</option>
           </select>
           <select name="type-otdel" id="type-otdel" className="map__filter" defaultValue="any"
             ref={this.otdelRef}
             onChange={this.handleFilter}>
-            <option value="any">Фильтр по отделу</option>
-            <option value="АХО">АХО</option>
-            <option value="Разработка">Разработка</option>
-            <option value="Тестирование">Тестирование</option>
+            <option value="any">Переезд/Остаётся</option>
+            <option value="Переезд">Переезд</option>
+            <option value="Остаётся">Остаётся</option>
           </select>
           <select name="type-gender" id="type-gender" className="map__filter" defaultValue="any"
             ref={this.genderRef}
