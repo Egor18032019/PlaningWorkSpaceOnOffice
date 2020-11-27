@@ -1,9 +1,9 @@
-import React, { PureComponent, createRef } from "react";
-import { connect } from "react-redux";
+import React, {PureComponent, createRef} from "react";
+import {connect} from "react-redux";
 
 import PropTypes from "prop-types";
 
-import { ActionActive } from "./data-reducer.js";
+import {ActionActive} from "./data-reducer.js";
 
 /* <!-- Фильтрация объявлений --> */
 class MapFilter extends PureComponent {
@@ -24,7 +24,7 @@ class MapFilter extends PureComponent {
   }
 
   handleFilter() {
-    const { handleFilterChange } = this.props;
+    const {handleFilterChange} = this.props;
     handleFilterChange({
       company: this.companyRef.current.value,
       departmens: this.departmensRef.current.value,
@@ -41,7 +41,6 @@ class MapFilter extends PureComponent {
     this.formRef.current.reset();
   }
   render() {
-    const { activeOffice } = this.props;
 
     return (
       <div className="map__filters-container">
@@ -108,8 +107,6 @@ class MapFilter extends PureComponent {
     );
   }
   componentDidUpdate(prevProps) {
-    console.log(prevProps.activeOffice);
-    console.log(this.props.activeOffice);
     if (prevProps.activeOffice !== this.props.activeOffice) {
       this._handleReset();
     }
@@ -130,8 +127,9 @@ const mapStateToProps = () => {
 
 MapFilter.propTypes = {
   handleFilterChange: PropTypes.func.isRequired,
+  activeOffice: PropTypes.string.isRequired,
 };
 
-export { MapFilter };
+export {MapFilter};
 export default connect(mapStateToProps, mapDispatchToTitle)(MapFilter); // первым стате а вторым фдиспатчеры
 
