@@ -1,9 +1,9 @@
-import React, {PureComponent, createRef} from "react";
-import {connect} from "react-redux";
+import React, { PureComponent, createRef } from "react";
+import { connect } from "react-redux";
 
 import PropTypes from "prop-types";
 
-import {ActionActive} from "./data-reducer.js";
+import { ActionActive } from "./data-reducer.js";
 
 /* <!-- Фильтрация объявлений --> */
 class MapFilter extends PureComponent {
@@ -18,11 +18,13 @@ class MapFilter extends PureComponent {
     this.apllebook = createRef();
     this.sistemnik = createRef();
     this.telephone = createRef();
+    this.formRef = createRef();
     this.handleFilter = this.handleFilter.bind(this);
+    this._handleReset = this._handleReset.bind(this);
   }
 
   handleFilter() {
-    const {handleFilterChange} = this.props;
+    const { handleFilterChange } = this.props;
     handleFilterChange({
       company: this.companyRef.current.value,
       departmens: this.departmensRef.current.value,
@@ -35,12 +37,15 @@ class MapFilter extends PureComponent {
       telephone: this.telephone.current.checked,
     });
   }
-
+  _handleReset() {
+    this.formRef.current.reset();
+  }
   render() {
-    // добавить сортировку по полу
+    const { activeOffice } = this.props;
+
     return (
       <div className="map__filters-container">
-        <form action="#" className="map__filters" autoComplete="off">
+        <form action="#" className="map__filters" autoComplete="off" ref={this.formRef}>
           <select name="type-space" id="type" className="map__filter" defaultValue="any"
             ref={this.spaceRef}
             onChange={this.handleFilter}>
@@ -65,6 +70,7 @@ class MapFilter extends PureComponent {
             <option value="ДФК">ДФК</option>
             <option value="Сеть">Сеть</option>
             <option value="Корус">Корус</option>
+            <option value="Благо">Благо</option>
             <option value="ПОС">ПОС</option>
           </select>
           <select name="type-otdel" id="type-otdel" className="map__filter" defaultValue="any"
@@ -101,7 +107,15 @@ class MapFilter extends PureComponent {
 
     );
   }
+  componentDidUpdate(prevProps) {
+    console.log(prevProps.activeOffice);
+    console.log(this.props.activeOffice);
+    if (prevProps.activeOffice !== this.props.activeOffice) {
+      this._handleReset();
+    }
+  }
 }
+
 
 const mapDispatchToTitle = (dispatch) => ({
   handleFilterChange(filter) {
@@ -118,6 +132,6 @@ MapFilter.propTypes = {
   handleFilterChange: PropTypes.func.isRequired,
 };
 
-export {MapFilter};
+export { MapFilter };
 export default connect(mapStateToProps, mapDispatchToTitle)(MapFilter); // первым стате а вторым фдиспатчеры
 

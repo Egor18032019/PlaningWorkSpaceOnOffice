@@ -27,6 +27,7 @@ const LeftPopup = (props) => {
   const dragAndDrop = () => {
 
     const pinRef = useRef(null);
+    const clickRef = useRef(null);
 
     const handleDown = (e) => {
 
@@ -42,7 +43,7 @@ const LeftPopup = (props) => {
 
       const setupDialogElement = document.querySelector(`main`);
       let rect = setupDialogElement.getBoundingClientRect();
-      pinRef.current.style.cursor = `pointer`;
+      pinRef.current.style.cursor = `cell`;
       let pinWidth = pinRef.current.offsetWidth;
       moveAt(e);
 
@@ -68,7 +69,7 @@ const LeftPopup = (props) => {
         coordX = Math.max(-250, Math.min(coordX, 1400));
         // console.log(`coordX ` + coordX);
 
-        let coordinateY = coordY - 10 + `px`;
+        let coordinateY = coordY - 20 + `px`;
         // let coordinateX = coordX + pinWidth / 2 + `px`;
         let coordinateX = coordX + pinWidth + `px`;
 
@@ -105,7 +106,8 @@ const LeftPopup = (props) => {
       let checkedSistemnik = sistemnik ? true : false;
       let checkedTelephone = telephone ? true : false;
       return (
-        <article className="map__card popup" ref={pinRef} onMouseDown={handleDown}>
+        <article className="map__card popup" ref={pinRef}>
+          <button ref={clickRef} onMouseDown={handleDown}>Переместить меню</button>
           <form className={`popup-form ${!isActive ? `popup-form--disabled` : ``}`} method="post" encType="multipart/form-data"
             action="https://js.dump.academy/keksobooking" autoComplete="off"
             onSubmit={(evt) => {

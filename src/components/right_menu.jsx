@@ -17,6 +17,7 @@ const RightMenu = (props) => {
   const dragAndDrop = () => {
 
     const pinRef = useRef(null);
+    const clickRef = useRef(null);
 
     const handleDown = (e) => {
 
@@ -32,7 +33,7 @@ const RightMenu = (props) => {
 
       const setupDialogElement = document.querySelector(`main`);
       let rect = setupDialogElement.getBoundingClientRect();
-      pinRef.current.style.cursor = `pointer`;
+      clickRef.current.style.cursor = `pointer`;
       let pinWidth = pinRef.current.offsetWidth;
       moveAt(e);
 
@@ -55,7 +56,7 @@ const RightMenu = (props) => {
         }
         coordX = Math.max(-250, Math.min(coordX, 1400));
 
-        let coordinateY = coordY - 35 + `px`;
+        let coordinateY = coordY - 15 + `px`;
         // let coordinateX = coordX + pinWidth / 2 + `px`;
         let coordinateX = coordX + pinWidth + `px`;
 
@@ -87,8 +88,9 @@ const RightMenu = (props) => {
 
     return (
       <article className="menu menu-drag" ref={pinRef}
-        onMouseDown={handleDown}>
-        <p className="menu-text">Список ФИО И № р.м.</p>
+      >
+        <button ref={clickRef} onMouseDown={handleDown}>Переместить меню</button>
+        <p className="menu-text" >Список ФИО И № р.м.</p>
         <input type="text" placeholder="Искать здесь" name="search" ref={textRef} onChange={onChange} />
         <ul className="menu-list">
           {filterPlaces.map(
