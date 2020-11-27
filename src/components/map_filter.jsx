@@ -18,7 +18,9 @@ class MapFilter extends PureComponent {
     this.apllebook = createRef();
     this.sistemnik = createRef();
     this.telephone = createRef();
+    this.formRef = createRef();
     this.handleFilter = this.handleFilter.bind(this);
+    this._handleReset = this._handleReset.bind(this);
   }
 
   handleFilter() {
@@ -35,12 +37,14 @@ class MapFilter extends PureComponent {
       telephone: this.telephone.current.checked,
     });
   }
-
+  _handleReset() {
+    this.formRef.current.reset();
+  }
   render() {
-    // добавить сортировку по полу
+
     return (
       <div className="map__filters-container">
-        <form action="#" className="map__filters" autoComplete="off">
+        <form action="#" className="map__filters" autoComplete="off" ref={this.formRef}>
           <select name="type-space" id="type" className="map__filter" defaultValue="any"
             ref={this.spaceRef}
             onChange={this.handleFilter}>
@@ -65,6 +69,7 @@ class MapFilter extends PureComponent {
             <option value="ДФК">ДФК</option>
             <option value="Сеть">Сеть</option>
             <option value="Корус">Корус</option>
+            <option value="Благо">Благо</option>
             <option value="ПОС">ПОС</option>
           </select>
           <select name="type-otdel" id="type-otdel" className="map__filter" defaultValue="any"
@@ -101,7 +106,13 @@ class MapFilter extends PureComponent {
 
     );
   }
+  componentDidUpdate(prevProps) {
+    if (prevProps.activeOffice !== this.props.activeOffice) {
+      this._handleReset();
+    }
+  }
 }
+
 
 const mapDispatchToTitle = (dispatch) => ({
   handleFilterChange(filter) {
@@ -116,6 +127,7 @@ const mapStateToProps = () => {
 
 MapFilter.propTypes = {
   handleFilterChange: PropTypes.func.isRequired,
+  activeOffice: PropTypes.string.isRequired,
 };
 
 export {MapFilter};

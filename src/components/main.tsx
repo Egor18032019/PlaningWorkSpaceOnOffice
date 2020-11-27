@@ -38,17 +38,17 @@ const Main = (props: MainProps) => {
           : ``
         }
       </div>
-      {activePlace && isActive  ?
+      {activePlace && isActive ?
         <PopupWrapped
           activePlace={activePlace}
           onPinClick={onPinClick}
         />
         : ``}
       {isActive ?
-      <MenuItemWrapper
-        places={places}
-        onPinClick={onPinClick}
-      />: ``}
+        <MenuItemWrapper
+          places={places}
+          onPinClick={onPinClick}
+        /> : ``}
       {/* <!-- Карта рабочих мест --> */}
       <section className={`map ${!isActive ? `map--faded` : ``}`} >
         <MapPin
@@ -72,7 +72,9 @@ const Main = (props: MainProps) => {
           </div>
 
         </div>
-        <MapFilter />
+        <MapFilter
+        activeOffice={activeOffice}
+        />
       </section>
       {/* <!-- Форма добавления новых рабочих мест и редактирование старых --> */}
       <section className="notice">
