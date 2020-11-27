@@ -7,6 +7,7 @@ import MenuItem from "./menu-item.jsx";
 
 const RightMenu = (props) => {
   const textRef = useRef();
+  const {places, onPinClick, filterPlaces} = props;
 
   function onChange() {
     const {handleFilterMenu} = props;
@@ -69,8 +70,12 @@ const RightMenu = (props) => {
 
       // 4. отследить окончание переноса
       pinRef.current.onmouseup = function (upEvt) {
-        console.log(`onmouseup`);
+        // console.log(`onmouseup`);
         upEvt.preventDefault();
+        setupDialogElement.onmousemove = null;
+        pinRef.current.onmouseup = null;
+      };
+      document.onmouseup = () => {
         setupDialogElement.onmousemove = null;
         pinRef.current.onmouseup = null;
       };
@@ -101,7 +106,6 @@ const RightMenu = (props) => {
       </article>
     );
   };
-  const {places, onPinClick, filterPlaces} = props;
   return (dragAndDrop());
 };
 
