@@ -71,7 +71,7 @@ const LeftPopup = (props) => {
 
         let coordinateY = coordY - 20 + `px`;
         // let coordinateX = coordX + pinWidth / 2 + `px`;
-        let coordinateX = coordX + pinWidth + `px`;
+        let coordinateX = coordX - (pinWidth / 3) + `px`;
 
         pinRef.current.style.top = coordinateY;
         pinRef.current.style.left = coordinateX;

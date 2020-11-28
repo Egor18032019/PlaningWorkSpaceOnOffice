@@ -58,7 +58,7 @@ const RightMenu = (props) => {
 
         let coordinateY = coordY - 15 + `px`;
         // let coordinateX = coordX + pinWidth / 2 + `px`;
-        let coordinateX = coordX + pinWidth + `px`;
+        let coordinateX = coordX - (pinWidth / 3) + `px`;
 
         pinRef.current.style.top = coordinateY;
         pinRef.current.style.left = coordinateX;
