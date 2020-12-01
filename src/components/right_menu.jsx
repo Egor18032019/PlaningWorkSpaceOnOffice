@@ -32,17 +32,16 @@ const RightMenu = (props) => {
       document.addEventListener(`keydown`, escFunction, false);
 
       const setupDialogElement = document.querySelector(`main`);
-      let rect = setupDialogElement.getBoundingClientRect();
-      clickRef.current.style.cursor = `pointer`;
+      clickRef.current.style.cursor = `cell`;
       let pinWidth = pinRef.current.offsetWidth;
       moveAt(e);
 
       function moveAt(evt) {
         evt.preventDefault();
-        let coordX = evt.clientX - rect.left;
+        let coordX = evt.clientX;
 
 
-        let coordY = evt.clientY - rect.top;
+        let coordY = evt.clientY;
         if ((coordY < 25) || (coordY > 1100)) {
           setupDialogElement.onmousemove = null;
           pinRef.current.onmouseup = null;
@@ -57,8 +56,7 @@ const RightMenu = (props) => {
         coordX = Math.max(-250, Math.min(coordX, 1400));
 
         let coordinateY = coordY - 15 + `px`;
-        // let coordinateX = coordX + pinWidth / 2 + `px`;
-        let coordinateX = coordX - (pinWidth / 3) + `px`;
+        let coordinateX = coordX - (pinWidth / 2) + `px`;
 
         pinRef.current.style.top = coordinateY;
         pinRef.current.style.left = coordinateX;
