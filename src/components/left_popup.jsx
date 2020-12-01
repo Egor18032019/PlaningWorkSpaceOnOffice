@@ -42,17 +42,18 @@ const LeftPopup = (props) => {
       document.addEventListener(`keydown`, escFunction, false);
 
       const setupDialogElement = document.querySelector(`main`);
-      let rect = setupDialogElement.getBoundingClientRect();
+
       pinRef.current.style.cursor = `cell`;
       let pinWidth = pinRef.current.offsetWidth;
       moveAt(e);
+      setupDialogElement.appendChild(pinRef.current);
 
       function moveAt(evt) {
         evt.preventDefault();
-        let coordX = evt.clientX - rect.left;
+        let coordX = evt.clientX;
 
 
-        let coordY = evt.clientY - rect.top;
+        let coordY = evt.clientY;
 
         if ((coordY < 25) || (coordY > 1100)) {
           setupDialogElement.onmousemove = null;
@@ -67,11 +68,9 @@ const LeftPopup = (props) => {
           coordX = Math.max(-250, Math.min(coordX, 1400));
         }
         coordX = Math.max(-250, Math.min(coordX, 1400));
-        // console.log(`coordX ` + coordX);
 
         let coordinateY = coordY - 20 + `px`;
-        // let coordinateX = coordX + pinWidth / 2 + `px`;
-        let coordinateX = coordX - (pinWidth / 3) + `px`;
+        let coordinateX = coordX - pinWidth / 2 + `px`;
 
         pinRef.current.style.top = coordinateY;
         pinRef.current.style.left = coordinateX;
@@ -84,7 +83,6 @@ const LeftPopup = (props) => {
       // 4. отследить окончание переноса
       document.onmouseup = () => {
         setupDialogElement.onmousemove = null;
-        pinRef.current.onmouseup = null;
       };
       pinRef.current.onmouseup = function (upEvt) {
         // console.log(`onmouseup`);
@@ -107,7 +105,7 @@ const LeftPopup = (props) => {
       let checkedTelephone = telephone ? true : false;
       return (
         <article className="map__card popup" ref={pinRef}>
-          <button ref={clickRef} onMouseDown={handleDown}>Переместить меню</button>
+          <button ref={clickRef} onMouseDown={handleDown}>Для перемещения держись за это</button>
           <form className={`popup-form ${!isActive ? `popup-form--disabled` : ``}`} method="post" encType="multipart/form-data"
             action="https://js.dump.academy/keksobooking" autoComplete="off"
             onSubmit={(evt) => {

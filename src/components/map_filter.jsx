@@ -45,7 +45,7 @@ class MapFilter extends PureComponent {
     return (
       <div className="map__filters-container">
         <form action="#" className="map__filters" autoComplete="off" ref={this.formRef}>
-          <select name="type-space" id="type" className="map__filter" defaultValue="any"
+          <select name="type-space" id="type-space" className="map__filter" defaultValue="any"
             ref={this.spaceRef}
             onChange={this.handleFilter}>
             <option value="any">Занято/Свободно</option>
