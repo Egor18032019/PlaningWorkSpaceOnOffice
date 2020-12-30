@@ -145,7 +145,7 @@ fieldset {
   position: absolute;
   z-index: 1;
 
-  width: 20px;
+  width: 25px;
   height: 20px;
   margin: 0;
   padding: 0;
@@ -188,7 +188,7 @@ fieldset {
   content: "";
   position: absolute;
 
-  width: 20px;
+  width: 25px;
   height: 20px;
 
   top: 0;
