@@ -57,6 +57,7 @@ const dataReducer = (state = initialState, action) => {
       return Object.assign({}, state, {
         page: `officePage`,
         office: action.office,
+        popup: null
       });
     case ActionType.GET_OFFERS_FAIL:
       return Object.assign({}, state, {

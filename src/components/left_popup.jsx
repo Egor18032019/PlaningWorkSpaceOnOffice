@@ -60,9 +60,8 @@ const LeftPopup = (props) => {
           pinRef.current.onmouseup = null;
           coordY = Math.max(25, Math.min(coordY, 1100));
         }
-        // console.log(`coordY ` + coordY);
 
-        if ((coordX < -250) || (coordX > 1400)) {
+        if ((coordX < 0) || (coordX > 2000)) {
           setupDialogElement.onmousemove = null;
           pinRef.current.onmouseup = null;
           coordX = Math.max(-250, Math.min(coordX, 1400));

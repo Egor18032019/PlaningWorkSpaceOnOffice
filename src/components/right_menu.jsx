@@ -48,12 +48,12 @@ const RightMenu = (props) => {
           coordY = Math.max(25, Math.min(coordY, 1100));
         }
 
-        if ((coordX < -250) || (coordX > 1400)) {
+        if ((coordX < -250) || (coordX > 1999)) {
           setupDialogElement.onmousemove = null;
           pinRef.current.onmouseup = null;
-          coordX = Math.max(-250, Math.min(coordX, 1400));
+          coordX = Math.max(-250, Math.min(coordX, 1999));
         }
-        coordX = Math.max(-250, Math.min(coordX, 1400));
+        coordX = Math.max(-250, Math.min(coordX, 1999));
 
         let coordinateY = coordY - 15 + `px`;
         let coordinateX = coordX - (pinWidth / 2) + `px`;
