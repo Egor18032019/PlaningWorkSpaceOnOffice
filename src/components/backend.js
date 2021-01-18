@@ -7,6 +7,8 @@ const URL = {
 };
 
 const URLGET = {
+  "Ekaterinburg 300": `https://script.google.com/macros/s/AKfycbwTDGAUveZeTZN1SpWwZC4RY0nkHTZZBRksU2jeXg/exec`,
+  "Ekaterinburg 503": `https://script.google.com/macros/s/AKfycbxp4hNaJG3Lj1jzu-Tv0wBNyln4txmo-ZQPCMGA8O4y8vCGLdddSoGU/exec`,
   "Ekaterinburg 801": `https://script.google.com/macros/s/AKfycby_hcQQ99DAAm1y7E8pZyKHc_OBu0spx94LPorq3m60qhrdPtcR/exec`,
   "Ekaterinburg 901": `https://script.google.com/macros/s/AKfycbxlU4-ran0HBA9kFVPT0uh_xxZgHJU2PipOHWVZhcEJEJThaZuK/exec`,
   "Ekaterinburg 803-816": `https://script.google.com/macros/s/AKfycbx4_-uDTCxQVRLhppd3Mtm8L_1-pzXDiQ5oeSa5jvC4qVtWm0TF/exec`,
@@ -23,8 +25,8 @@ const StatusCode = {
 
 
 const onLoadForm = (place) => {
-  // console.log(place);
-  let loadUrl = URLGET[place];
+  const loadUrl = URLGET[place];
+  // console.log(loadUrl);
 
   return new Promise(function (resolve, reject) {
 
@@ -42,7 +44,7 @@ const onLoadForm = (place) => {
       }
     };
     xhr.onerror = function () {
-      reject(new Error(`Network Error`));
+      reject(new Error(`Network Error from Google`));
     };
     xhr.send();
   });
