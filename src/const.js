@@ -273,6 +273,8 @@ const workedPlaceOnOffice = {
 };
 
 const arrayBackGroundImage = {
+  "Ekaterinburg 300": `../img/Ekaterinburg_3floor.jpg`,
+  "Ekaterinburg 503": `../img/Ekaterinburg_5floor.jpg`,
   "Ekaterinburg 801": `../img/Ekaterinburg_8floor.jpg`,
   "Ekaterinburg 901": `../img/Ekaterinburg_9floor.jpg`,
   "Ekaterinburg 803-816": `../img/Ekaterinburg_8floor_new.jpg`,

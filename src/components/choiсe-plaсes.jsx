@@ -14,9 +14,11 @@ const ChoicePlaces = (props) => {
     <form action="#" className="map__filters" autoComplete="off"
       onSubmit={handleSubmit}>
       <select name="choise-space" id="choise" className="map__choise" defaultValue="Ekaterinburg 801" ref={menuRef}>
+        <option value="Ekaterinburg 300">Екатеринбург 3 этаж 300(в процессе)</option>
+        <option value="Ekaterinburg 503">Екатеринбург 5 этаж (в процессе)</option>
         <option value="Ekaterinburg 801">Екатеринбург 8 этаж 801-802</option>
         <option value="Ekaterinburg 803-816">Екатеринбург 8 этаж 803-816(в процессе)</option>
-        <option value="Ekaterinburg 901">Екатеринбург 9 этаж</option>
+        <option value="Ekaterinburg 901">Екатеринбург 9 этаж 901-902</option>
         <option value="Ryazan">Рязань</option>
         <option value="Samara">Самара офис №</option>
       </select>
