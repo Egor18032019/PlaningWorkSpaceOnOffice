@@ -28,10 +28,10 @@ const MapPin = (props) => {
         let pinWidth = pinRef.current.offsetWidth;
         let pinHeight = pinRef.current.offsetHeight;
         let coordX = evt.clientX - rect.left;
-        if ((coordX < (pinWidth / 3) || (coordX > (rect.width - pinWidth)))) {
+        if ((coordX < (pinWidth / 3) || (coordX > (rect.width - pinWidth / 2)))) {
           setupDialogElement.onmousemove = null;
           pinRef.current.onmouseup = null;
-          coordX = Math.max((pinWidth / 3), Math.min(coordX, (rect.width - pinWidth)));
+          coordX = Math.max((pinWidth / 3), Math.min(coordX, (rect.width - pinWidth / 2)));
         }
         let coordY = evt.clientY - rect.top;
         if ((coordY < 200) || (coordY > 690)) {
