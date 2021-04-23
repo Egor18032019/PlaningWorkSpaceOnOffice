@@ -2,7 +2,7 @@
 import * as React from "react";
 
 import { AdFormProps } from "../types";
-
+import { save } from "../components/backend"
 interface State {
   avatar: number | null,
   avatarPreviewUrl: string | ArrayBuffer,
@@ -12,7 +12,7 @@ interface State {
 
 class AdForm extends React.PureComponent<AdFormProps, State> {
   formRef: React.RefObject<HTMLFormElement>;
-  idRef: React.RefObject<HTMLInputElement> ;
+  idRef: React.RefObject<HTMLInputElement>;
   titledRef: React.RefObject<HTMLInputElement>;
   type: React.RefObject<HTMLSelectElement>;
   departmens: React.RefObject<HTMLSelectElement>;
@@ -60,7 +60,8 @@ class AdForm extends React.PureComponent<AdFormProps, State> {
   handleSubmit(evt) {
     const { handlerSubmitForAdd, coordinateX, coordinateY } = this.props;
     evt.preventDefault();
-      handlerSubmitForAdd(
+    save()
+    handlerSubmitForAdd(
       {
         id: this.idRef.current.value,
         titlle: this.titledRef.current.value,
