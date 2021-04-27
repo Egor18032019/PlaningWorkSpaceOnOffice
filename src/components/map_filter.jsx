@@ -71,6 +71,7 @@ class MapFilter extends PureComponent {
             <option value="Корус">Корус</option>
             <option value="Благо">Благо</option>
             <option value="ПОС">ПОС</option>
+            <option value="Масс">Масс</option>
           </select>
           <select name="type-otdel" id="type-otdel" className="map__filter" defaultValue="any"
             ref={this.otdelRef}
