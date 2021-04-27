@@ -186,6 +186,7 @@ class AdForm extends React.PureComponent<AdFormProps, State> {
             <option value="Сеть">Сеть</option>
             <option value="Корус">Корус</option>
             <option value="ПОС">ПОС</option>
+            <option value="Масс">Масс</option>
           </select>
         </fieldset>
         <fieldset className="ad-form__element ad-form__element--time">

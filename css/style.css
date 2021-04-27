@@ -676,6 +676,10 @@ a.btn-primary:focus {
   color: #000000;
 }
 
+.popup-form__element textarea {
+  resize: none;
+}
+
 .ad-form__element input,
 .ad-form__element select,
 .ad-form__element textarea {
@@ -1416,4 +1420,34 @@ a.btn-primary:focus {
 .error__button:active {
   outline: none;
   opacity: 0.6;
+}
+
+/* ------------------для телефона-------------------------
+ */
+@media (max-width: 1080px) {
+  .notice {
+    display: none;
+  }
+
+  .menu {
+    display: none;
+  }
+
+  .map__card {
+    width: 540px;
+    height: 173px;
+    top: 95px;
+
+  }
+
+  .popup-form {
+    width: 520px;
+    height: 130px;
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .map__filters {
+    flex-direction: column;
+  }
 }
