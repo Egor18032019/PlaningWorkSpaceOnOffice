@@ -1423,8 +1423,11 @@ a.btn-primary:focus {
 }
 
 .space__filters {
+  height: 46px;
   display: flex;
+  justify-content: center;
   flex-direction: row;
+  
 }
 
 /* ------------------для телефона-------------------------
