@@ -1447,7 +1447,28 @@ a.btn-primary:focus {
     flex-wrap: wrap;
   }
 
-  .map__filters {
+  .promo {
+    width: 50%;
+    display: flex;
     flex-direction: column;
+    font-size: 10px;
   }
+
+  .map__filters {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 70px;
+    padding-top: 20px;
+  }
+
+  .map__filters button {
+    width: 110px;
+  }
+
+  .popup__avatar,
+  .popup__photo {
+    display: none;
+  }
+
 }
