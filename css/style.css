@@ -434,7 +434,7 @@ a.btn-primary:focus {
   box-shadow: 0 0 2px 2px #ff6547;
 }
 
-.map__feature {
+.space__feature {
   display: inline-block;
   overflow: hidden;
 
@@ -454,72 +454,72 @@ a.btn-primary:focus {
   border-radius: 3px;
 }
 
-.map__feature--notebook {
+.space__feature--notebook {
   background-position: 2px 5px;
 }
 
-.map__checkbox:checked+.map__feature--notebook {
+.space__checkbox:checked+.space__feature--notebook {
   background-position: 2px -172px;
 }
 
-.map__feature--apllebook {
+.space__feature--apllebook {
   background-position: 2px -25px;
 }
 
-.map__checkbox:checked+.map__feature--apllebook {
+.space__checkbox:checked+.space__feature--apllebook {
   background-position: 2px -202px;
 }
 
-.map__feature--sistemnik {
+.space__feature--sistemnik {
   background-position: 3px -55px;
 }
 
-.map__checkbox:checked+.map__feature--sistemnik {
+.space__checkbox:checked+.space__feature--sistemnik {
   background-position: 2px -232px;
 }
 
-.map__feature--telephone {
+.space__feature--telephone {
   background-position: 2px -85px;
 }
 
-.map__checkbox:checked+.map__feature--telephone {
+.space__checkbox:checked+.space__feature--telephone {
   background-position: 2px -262px;
 }
 
-.map__feature--elevator {
+.space__feature--elevator {
   background-position: 2px -143px;
 }
 
-.map__checkbox:checked+.map__feature--elevator {
+.space__checkbox:checked+.space__feature--elevator {
   background-position: 2px -321px;
 }
 
-.map__feature--conditioner {
+.space__feature--conditioner {
   background-position: 3px -114px;
 }
 
-.map__checkbox:checked+.map__feature--conditioner {
+.space__checkbox:checked+.space__feature--conditioner {
   background-position: 2px -291px;
 }
 
-.map__feature:hover {
+.space__feature:hover {
   -webkit-box-shadow: inset 0 0 0 1px #ffaa99;
   box-shadow: inset 0 0 0 1px #ffaa99;
 }
 
-.map__feature:focus,
-.map__checkbox:focus+.map__feature {
+.space__feature:focus,
+.space__checkbox:focus+.space__feature {
   -webkit-box-shadow: 0 0 2px 2px #ff6547;
   box-shadow: 0 0 2px 2px #ff6547;
 }
 
-.map__feature:active {
+.space__feature:active {
   -webkit-box-shadow: none;
   box-shadow: none;
   background-color: #ff6547;
 }
 
-.map__checkbox:checked+.map__feature {
+.space__checkbox:checked+.map__feature {
   background-color: #ff6547;
   -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2) inset;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2) inset;
@@ -1471,4 +1471,12 @@ a.btn-primary:focus {
     display: none;
   }
 
+  .space__filters {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .map:not(.map--faded) .map__pin--main {
+    display: none;
+  }
 }

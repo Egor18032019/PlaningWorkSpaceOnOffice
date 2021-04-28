@@ -44,15 +44,15 @@ class MapFilter extends PureComponent {
 
     return (
       <div className="map__filters-container">
-        <form action="#" className="map__filters" autoComplete="off" ref={this.formRef}>
-          <select name="type-space" id="type-space" className="map__filter" defaultValue="any"
+        <form action="#" className="space__filters" autoComplete="off" ref={this.formRef}>
+          <select name="type-space" id="type-space" className="space__filter" defaultValue="any"
             ref={this.spaceRef}
             onChange={this.handleFilter}>
             <option value="any">Занято/Свободно</option>
             <option value="1">Занято</option>
             <option value="0">Свободно</option>
           </select>
-          <select name="type-company" id="type-company" className="map__filter" defaultValue="Любая"
+          <select name="type-company" id="type-company" className="space__filter" defaultValue="Любая"
             ref={this.companyRef}
             onChange={this.handleFilter}>
             <option value="any">Тип организации</option>
@@ -60,7 +60,7 @@ class MapFilter extends PureComponent {
             <option value="Светлые">Светлые</option>
             <option value="Подрядчики">Подрядчики</option>
           </select>
-          <select name="type-departmens" id="type-departmens" className="map__filter" defaultValue="any"
+          <select name="type-departmens" id="type-departmens" className="space__filter" defaultValue="any"
             ref={this.departmensRef}
             onChange={this.handleFilter}>
             <option value="any">Фильтр по департаменту</option>
@@ -73,14 +73,14 @@ class MapFilter extends PureComponent {
             <option value="ПОС">ПОС</option>
             <option value="Масс">Масс</option>
           </select>
-          <select name="type-otdel" id="type-otdel" className="map__filter" defaultValue="any"
+          <select name="type-otdel" id="type-otdel" className="space__filter" defaultValue="any"
             ref={this.otdelRef}
             onChange={this.handleFilter}>
             <option value="any">Переезд/Остаётся</option>
             <option value="Переезд">Переезд</option>
             <option value="Остаётся">Остаётся</option>
           </select>
-          <select name="type-gender" id="type-gender" className="map__filter" defaultValue="any"
+          <select name="type-gender" id="type-gender" className="space__filter" defaultValue="any"
             ref={this.genderRef}
             onChange={this.handleFilter}>
             <option value="any">Мужской/Женский</option>
@@ -88,19 +88,19 @@ class MapFilter extends PureComponent {
             <option value="Женский">Женский</option>
           </select>
 
-          <fieldset id="work-features" className="map__features" onChange={this.handleFilter}>
+          <fieldset id="work-features" className="space__features" onChange={this.handleFilter}>
             <input type="checkbox" name="features" value="notebook" id="filter-notebook"
-              className="map__checkbox visually-hidden" ref={this.notebook} />
-            <label className="map__feature map__feature--notebook" htmlFor="filter-notebook">Ноутбук</label>
+              className="space__checkbox visually-hidden" ref={this.notebook} />
+            <label className="space__feature space__feature--notebook" htmlFor="filter-notebook">Ноутбук</label>
             <input type="checkbox" name="features" value="apllebook" id="filter-apllebook"
-              className="map__checkbox visually-hidden" ref={this.apllebook} />
-            <label className="map__feature map__feature--apllebook" htmlFor="filter-apllebook">Макбук</label>
+              className="space__checkbox visually-hidden" ref={this.apllebook} />
+            <label className="space__feature space__feature--apllebook" htmlFor="filter-apllebook">Макбук</label>
             <input type="checkbox" name="features" value="sistemnik" id="filter-sistemnik"
-              className="map__checkbox visually-hidden" ref={this.sistemnik} />
-            <label className="map__feature map__feature--sistemnik" htmlFor="filter-sistemnik">Системный блок</label>
+              className="space__checkbox visually-hidden" ref={this.sistemnik} />
+            <label className="space__feature space__feature--sistemnik" htmlFor="filter-sistemnik">Системный блок</label>
             <input type="checkbox" name="features" value="telephone" id="filter-telephone"
-              className="map__checkbox visually-hidden" ref={this.telephone} />
-            <label className="map__feature map__feature--telephone" htmlFor="filter-telephone">Рабочий телефон</label>
+              className="space__checkbox visually-hidden" ref={this.telephone} />
+            <label className="space__feature space__feature--telephone" htmlFor="filter-telephone">Рабочий телефон</label>
           </fieldset>
         </form>
       </div>
