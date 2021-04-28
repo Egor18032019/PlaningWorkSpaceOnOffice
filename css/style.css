@@ -1422,6 +1422,11 @@ a.btn-primary:focus {
   opacity: 0.6;
 }
 
+.space__filters {
+  display: flex;
+  flex-direction: row;
+}
+
 /* ------------------для телефона-------------------------
  */
 @media (max-width: 1080px) {
@@ -1471,10 +1476,7 @@ a.btn-primary:focus {
     display: none;
   }
 
-  .space__filters {
-    display: flex;
-    flex-direction: row;
-  }
+
 
   .map:not(.map--faded) .map__pin--main {
     display: none;
