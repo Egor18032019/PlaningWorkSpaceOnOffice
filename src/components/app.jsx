@@ -31,7 +31,7 @@ class App extends PureComponent {
       );
     } else {
       return (
-        <div>
+        <div className="promo__choise">
           <ChoicePlaces
             onChoiseOfficeClick={handlerClickOnChoise}
           />

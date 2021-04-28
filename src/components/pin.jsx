@@ -27,10 +27,10 @@ const Pin = (props) => {
     let pinWidth = 20;
     // высота пина
     let pinHeight = 20;
-    let coordinateXcurrent = coordinateX + pinWidth + `px`;
-    let coordinateYcurrent = coordinateY + pinHeight + `px`;
+    let coordinateXcurrent = coordinateX - 15 + pinWidth + `px`;
+    let coordinateYcurrent = coordinateY + 15 + pinHeight + `px`;
     return (
-      <button type="button" className={`map__pin ` + classForActive} style={{left: coordinateXcurrent, top: coordinateYcurrent}}
+      <button type="button" className={`map__pin` + ` ` + classForActive} style={{left: coordinateXcurrent, top: coordinateYcurrent}}
         onClick={onPinClickForPopup}>
         {/* если картинку то не видно номера места. Подумать про другие варианты */}
         {/* <img src="img/avatars/user02.png" width="20" height="20" draggable="false"
