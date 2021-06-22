@@ -281,7 +281,20 @@ const arrayBackGroundImage = {
   "Ryazan": ``,
   "Samara": ``,
 };
+
+const LOGIN_ROUTE = `/login`;
+const WORK_ROUTE = `/work`;
+const PROP_ROUTE = `/property`;
+const OFFISE_STATE = `officePage`;
+const CHOISE_STATE = `promo__choise`;
+
+
 export {
   workedPlaceOnOffice,
-  arrayBackGroundImage
+  arrayBackGroundImage,
+  LOGIN_ROUTE,
+  WORK_ROUTE,
+  PROP_ROUTE,
+  OFFISE_STATE,
+  CHOISE_STATE,
 };

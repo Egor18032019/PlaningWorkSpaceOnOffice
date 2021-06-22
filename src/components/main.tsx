@@ -13,13 +13,23 @@ import RightMenu from "./right_menu.jsx";
 import { MainProps } from "../types";
 import withMenuItem from "./whit_menu_item.jsx";
 const MenuItemWrapper = withMenuItem(RightMenu);
+import { useAuthState } from "react-firebase-hooks/auth";
 
 const Main = (props: MainProps) => {
 
   const { activeOffice, isActive, onChangeCoordinate, pinMainCoordinate, onChangeCoordinateY,
     onChangeCoordinateX, coordinateX, coordinateY, activePlace,
-    onPinClick, places, handlerSubmitForAdd, handlerClickOnChoise, onClickActive, onMovePoint } = props;
+    onPinClick, places, handlerSubmitForAdd, handlerClickOnChoise, onClickActive, onMovePoint, auth } = props;
   const BGI = arrayBackGroundImage[activeOffice];
+
+  const [user, loading, error] = useAuthState(auth);
+  let formSelector = false
+  if (user) {
+    if (user.displayName == "Egor P") {
+      console.log("Это ты")
+      formSelector = true
+    }
+  }
 
   return (
     <main>
@@ -75,16 +85,21 @@ const Main = (props: MainProps) => {
         />
       </section>
       {/* <!-- Форма добавления новых рабочих мест и редактирование старых --> */}
-      <section className="notice">
-        <h2 className="notice__title">Новое р.м.</h2>
-        <AdForm
-          isActive={isActive}
-          pinMainCoordinate={pinMainCoordinate}
-          coordinateY={coordinateY}
-          coordinateX={coordinateX}
-          handlerSubmitForAdd={handlerSubmitForAdd}
-        />
-      </section>
+      {formSelector ?
+        <section className="notice">
+          <h2 className="notice__title">Новое р.м.</h2>
+          <AdForm
+            isActive={isActive}
+            pinMainCoordinate={pinMainCoordinate}
+            coordinateY={coordinateY}
+            coordinateX={coordinateX}
+            handlerSubmitForAdd={handlerSubmitForAdd}
+          />
+        </section>
+        :
+        ""
+      }
+
     </main >
   );
 };

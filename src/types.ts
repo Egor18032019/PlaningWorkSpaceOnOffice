@@ -29,10 +29,11 @@ interface MainProps {
   activePlace: object,
   pinMainCoordinate: string,
   places: [],
+  auth: any //поправить !
 };
 
 interface AdFormProps {
-  handlerSubmitForAdd: ({}) => {},
+  handlerSubmitForAdd: ({ }) => {},
   pinMainCoordinate: string,
   isActive: boolean,
   coordinateX: number,

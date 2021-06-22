@@ -1,76 +1,52 @@
-import React, {PureComponent} from "react";
+import React from "react";
 import PropTypes from "prop-types";
-import {Switch, Route, BrowserRouter} from "react-router-dom";
+import {BrowserRouter} from "react-router-dom";
 import {connect} from "react-redux";
+import {useAuthState} from "react-firebase-hooks/auth";
 import {ActionActive, ActionPlace, Operation} from "./data-reducer.js";
-import {getActiveOffice, getActivePage, getPopup, getPlaces} from "./selectors.js";
-import Main from "./main.tsx";
-import withMain from "./whit-main";
-const MainWrapped = withMain(Main);
-import ChoicePlaces from "./choiсe-plaсes.jsx";
-import ImportButton from "./import_button.jsx";
+import {Operation as OperationUser} from "./user-reducer.js";
+import {getActiveOffice, getActivePage, getPopup, getPlaces, getAuth, getAuthStatus} from "./selectors.js";
+import Loader from "./loader.jsx";
+import AppRouter from "./app_router.jsx";
+import Navbar from "./nav_bar.jsx";
+const App = (props) => {
+  const {activeOffice, handlerClickOnChoise, activePage, activePlace, onPinClick,
+    places, handlerSubmitForAdd, getNewData, auth, signOut, authorizationStatus} = props;
 
-class App extends PureComponent {
-  constructor(props) {
-    super(props);
+  // eslint-disable-next-line no-unused-vars
+  const [user, loading, error] = useAuthState(auth);
+  if (loading) {
+    return <Loader />;
   }
 
-  _renderApp() {
-    const {activeOffice, handlerClickOnChoise, activePage, activePlace, onPinClick,
-      places, handlerSubmitForAdd, getNewData} = this.props;
-    if (activePage === `officePage`) {
-      return (
-        <MainWrapped
-          activeOffice={activeOffice}
-          activePlace={activePlace}
-          onPinClick={onPinClick}
-          places={places}
-          handlerSubmitForAdd={handlerSubmitForAdd}
-          handlerClickOnChoise={handlerClickOnChoise}
-        />
-      );
-    } else {
-      return (
-        <div className="promo__choise">
-          <ChoicePlaces
-            onChoiseOfficeClick={handlerClickOnChoise}
-          />
-          <ImportButton
-            getNewData={getNewData}
-          />
-        </div>
-      );
-    }
-  }
-
-  render() {
-    const {activeOffice, onPinClick, activePlace, places, handlerSubmitForAdd} = this.props;
-    return (
-      <BrowserRouter>
-        <Switch>
-          <Route exact path="/">
-            {this._renderApp()}
-          </Route>
-          <Route exact path="/property">
-            <MainWrapped
-              activeOffice={activeOffice}
-              activePlace={activePlace}
-              handlerSubmitForAdd={handlerSubmitForAdd}
-              places={places}
-              onPinClick={onPinClick} />
-          </Route>
-          <Route exact path="/login">
-
-          </Route>
-        </Switch>
-      </BrowserRouter >
-    );
-  }
-}
+  return (
+    <BrowserRouter>
+      <Navbar
+        auth={auth}
+        signOut={signOut}
+      />
+      <AppRouter
+        activeOffice={activeOffice}
+        activePlace={activePlace}
+        onPinClick={onPinClick}
+        activePage={activePage}
+        places={places}
+        handlerSubmitForAdd={handlerSubmitForAdd}
+        handlerClickOnChoise={handlerClickOnChoise}
+        getNewData={getNewData}
+        auth={auth}
+        authorizationStatus={authorizationStatus}
+      />
+    </BrowserRouter >
+  );
+};
 
 const mapDispatchToTitle = (dispatch) => ({
   handlerClickOnChoise(place) {
     dispatch(Operation.loadDataAsync(place));
+  },
+  signOut() {
+    dispatch(OperationUser.signOut());
   },
   getNewData(newDataObj) {
     dispatch(ActionActive.activeNewState(newDataObj));
@@ -94,6 +70,8 @@ const mapStateToProps = (store) => {
     activePage: getActivePage(store),
     activePlace: getPopup(store),
     places: getPlaces(store),
+    auth: getAuth(store),
+    authorizationStatus: getAuthStatus(store),
   };
 };
 
@@ -102,10 +80,13 @@ App.propTypes = {
   getNewData: PropTypes.func.isRequired,
   handlerSubmitForAdd: PropTypes.func.isRequired,
   handlerClickOnChoise: PropTypes.func.isRequired,
+  signOut: PropTypes.func.isRequired,
   activeOffice: PropTypes.string,
+  authorizationStatus: PropTypes.string.isRequired,
   places: PropTypes.array.isRequired,
   activePage: PropTypes.string.isRequired,
   activePlace: PropTypes.object,
+  auth: PropTypes.object.isRequired,
 };
 
 export {App};
