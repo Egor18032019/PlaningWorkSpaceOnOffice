@@ -31,6 +31,7 @@ const Login = (props) => {
               <ul>
                 <li>Перейти с Google-table на БД(Firebae) </li>
                 <li>Перенести все final-const в один файл</li>
+                <li>Добаить описание на эту страницу</li>
                 <li>Провести рефакторинг</li>
               </ul>
 
