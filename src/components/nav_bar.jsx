@@ -23,25 +23,20 @@ const Navbar = (props) => {
             <Avatar alt="Remy Sharp" src={user.photoURL} />
             <div >{user.displayName}</div>
           </Grid>
-          <Grid container justify={`center`} size={`Large`}>
-            <NavLink to={`/`} style={{background: `lightgray`, border: `none`, boxShadow: `none`}}>
-              <Button size={`Small`} variant={`contained`} style={{width: `144px`}}>Главное меню</Button>
-            </NavLink>
-          </Grid>
           <Grid container justify={`flex-end`}>
             <Button onClick={() => signOut()} variant={`outlined`}>Выйти</Button>
           </Grid>
         </Toolbar>
         :
-        <Toolbar container variant={`dense`}>
+        <Toolbar container="true" variant={`dense`}>
           <Grid container justify={`flex-start`}>
-            <NavLink to={`/`} style={{background: `lightgray`, border: `none`, boxShadow: `none`}}>
-              <Button size={`Small`} variant={`contained`} style={{width: `144px`}}>Главное меню</Button>
+            <NavLink container="true" to={`/`} style={{background: `lightgray`, border: `none`, boxShadow: `none`}}>
+              <Button size={`small`} variant={`contained`} style={{width: `144px`}}>Главное меню</Button>
             </NavLink>
           </Grid>
-          <Grid justify={`flex-end`}>
-            <NavLink container to={LOGIN_ROUTE} style={{background: `lightgray`, border: `none`, boxShadow: `none`}}>
-              <Button variant={`contained`}>Логин</Button>
+          <Grid container justify={`flex-end`}>
+            <NavLink container="true" to={LOGIN_ROUTE} style={{background: `lightgray`, border: `none`, boxShadow: `none`}}>
+              <Button variant={`contained`} size={`small`}>Логин</Button>
             </NavLink>
           </Grid>
         </Toolbar>

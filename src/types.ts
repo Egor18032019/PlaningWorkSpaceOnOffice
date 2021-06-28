@@ -29,6 +29,7 @@ interface MainProps {
   activePlace: object,
   pinMainCoordinate: string,
   places: [],
+  authorizationStatus: string,
   auth: any //поправить !
 };
 

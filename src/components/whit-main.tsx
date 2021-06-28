@@ -1,28 +1,34 @@
 import * as React from "react";
-import {Subtract} from "utility-types";
+import { Subtract } from "utility-types";
+import { useAuthState } from "react-firebase-hooks/auth";
 
 interface State {
   isActive: boolean,
   coordinateY: number | null,
   coordinateX: number | null,
-  pinMainCoordinate: string | null
+  pinMainCoordinate: string | null,
 }
 
 const withMain = (Component) => {
   type P = React.ComponentProps<typeof Component>;
 
-  class WithMain extends React.PureComponent<P,State>{
+  class WithMain extends React.PureComponent<P, State>{
     constructor(props) {
       super(props);
+      let foo = false;
+      if (props.authorizationStatus === "NO_AUTH") {
+        foo = true;
+      }
       this.state = {
-        isActive: false,
+        isActive: foo,
         coordinateY: null,
         coordinateX: null,
         pinMainCoordinate: ``,
       };
     }
+
     render() {
-      const {isActive, pinMainCoordinate, coordinateY, coordinateX} = this.state;
+      const { isActive, pinMainCoordinate, coordinateY, coordinateX } = this.state;
       return (
         <Component
           {...this.props}
@@ -30,17 +36,17 @@ const withMain = (Component) => {
           coordinateY={coordinateY}
           coordinateX={coordinateX}
           pinMainCoordinate={pinMainCoordinate}
-          onChangeCoordinate={(coordinate)=>{
-            this.setState({pinMainCoordinate: coordinate});
+          onChangeCoordinate={(coordinate) => {
+            this.setState({ pinMainCoordinate: coordinate });
           }}
-          onChangeCoordinateX={(coordinate)=>{
-            this.setState({coordinateX: coordinate});
+          onChangeCoordinateX={(coordinate) => {
+            this.setState({ coordinateX: coordinate });
           }}
-          onChangeCoordinateY={(coordinate)=>{
-            this.setState({coordinateY: coordinate});
+          onChangeCoordinateY={(coordinate) => {
+            this.setState({ coordinateY: coordinate });
           }}
-          onClickActive={()=>{
-            this.setState({isActive: true});
+          onClickActive={() => {
+            this.setState({ isActive: true });
           }}
         >
         </Component>

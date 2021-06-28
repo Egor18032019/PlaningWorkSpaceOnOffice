@@ -19,14 +19,14 @@ const Main = (props: MainProps) => {
 
   const { activeOffice, isActive, onChangeCoordinate, pinMainCoordinate, onChangeCoordinateY,
     onChangeCoordinateX, coordinateX, coordinateY, activePlace,
-    onPinClick, places, handlerSubmitForAdd, handlerClickOnChoise, onClickActive, onMovePoint, auth } = props;
+    onPinClick, places, handlerSubmitForAdd, handlerClickOnChoise, onClickActive, onMovePoint,
+    authorizationStatus, auth } = props;
   const BGI = arrayBackGroundImage[activeOffice];
 
   const [user, loading, error] = useAuthState(auth);
   let formSelector = false
   if (user) {
     if (user.displayName == "Egor P") {
-      console.log("Это ты")
       formSelector = true
     }
   }
@@ -67,6 +67,7 @@ const Main = (props: MainProps) => {
           onChangeCoordinate={onChangeCoordinate}
           onChangeCoordinateX={onChangeCoordinateX}
           onChangeCoordinateY={onChangeCoordinateY}
+          authorizationStatus={authorizationStatus}
         />
         {/* <!-- Метки рабочих мест --> */}
         <Pins

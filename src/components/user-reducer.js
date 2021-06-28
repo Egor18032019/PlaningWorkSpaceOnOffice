@@ -28,6 +28,7 @@ firebase.initializeApp({
   measurementId: `G-EFHWL1D7DD`
 });
 const auth = firebase.auth();
+auth.signOut();
 const firestore = firebase.firestore();
 
 
@@ -43,7 +44,7 @@ const usersReducer = (state = initialState, action) => {
     case ActionType.REQUIRED_AUTHORIZATION:
       return Object.assign({}, state, {
         authorizationStatus: AuthorizationStatus.NO_AUTH,
-        
+
       });
     case ActionType.AUTHORIZATION:
       return Object.assign({}, state, {
@@ -85,7 +86,7 @@ const Operation = {
 const ActionCreator = {
   // переписать
   setAuthStatus: (status) => {
-    console.log(`aaaa`);
+    console.log(`setAuthStatus`);
     return {
       type: ActionType.REQUIRED_AUTHORIZATION,
       payload: status

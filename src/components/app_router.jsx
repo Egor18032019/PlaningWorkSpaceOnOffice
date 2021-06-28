@@ -13,7 +13,7 @@ import {LOGIN_ROUTE, PROP_ROUTE, OFFISE_STATE} from "../const.js";
 
 const AppRouter = (props) => {
   const {activeOffice, handlerClickOnChoise, activePage, activePlace, onPinClick,
-    places, handlerSubmitForAdd, getNewData, auth} = props;
+    places, handlerSubmitForAdd, getNewData, auth, authorizationStatus} = props;
 
   return (
     <Switch>
@@ -30,6 +30,7 @@ const AppRouter = (props) => {
                 handlerSubmitForAdd={handlerSubmitForAdd}
                 handlerClickOnChoise={handlerClickOnChoise}
                 auth={auth}
+                authorizationStatus={authorizationStatus}
               />);
           }
           return (
@@ -65,6 +66,7 @@ AppRouter.propTypes = {
   activePage: PropTypes.string.isRequired,
   activePlace: PropTypes.object,
   auth: PropTypes.object,
+  authorizationStatus: PropTypes.string
 };
 
 export default AppRouter;

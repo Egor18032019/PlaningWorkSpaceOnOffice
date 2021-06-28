@@ -27,6 +27,15 @@ const Login = (props) => {
             direction={`column`}
           >
             <Box p={5}>
+              Сделать:
+              <ul>
+                <li>Перейти с Google-table на БД(Firebae) </li>
+                <li>Перенести все final-const в один файл</li>
+                <li>Провести рефакторинг</li>
+              </ul>
+
+            </Box>
+            <Box p={5}>
               <NavLink to={`/`} style={{background: `lightgray`, border: `none`, boxShadow: `none`}}>
                 <Button variant={`outlined`} >Перейти на главную</Button>
               </NavLink>            </Box>
