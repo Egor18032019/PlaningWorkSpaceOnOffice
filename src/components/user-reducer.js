@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 // import {
 //   AppRoute
 // } from "../../const";
@@ -30,12 +31,23 @@ firebase.initializeApp({
 const auth = firebase.auth();
 auth.signOut();
 const firestore = firebase.firestore();
+// let docRef = firestore.collection(`Ekaterinburg_801`).get().then((querySnapshot) => {
+//   console.log(querySnapshot.docs);
+
+//   // querySnapshot.forEach((doc) => {
+//   //   // doc.data() is never undefined for query doc snapshots
+//   //   console.log(doc.id, ` => `, doc.data());
+//   // }
+//   // );
+// });
+
 
 
 // Объект начального состояния(state):
 const initialState = {
   authorizationStatus: AuthorizationStatus.NO_AUTH,
-  auth
+  auth,
+  firestore
 };
 
 
@@ -86,7 +98,6 @@ const Operation = {
 const ActionCreator = {
   // переписать
   setAuthStatus: (status) => {
-    console.log(`setAuthStatus`);
     return {
       type: ActionType.REQUIRED_AUTHORIZATION,
       payload: status

@@ -5,16 +5,56 @@ import {connect} from "react-redux";
 import {useAuthState} from "react-firebase-hooks/auth";
 import {ActionActive, ActionPlace, Operation} from "./data-reducer.js";
 import {Operation as OperationUser} from "./user-reducer.js";
-import {getActiveOffice, getActivePage, getPopup, getPlaces, getAuth, getAuthStatus} from "./selectors.js";
+import {
+  getActiveOffice, getActivePage, getPopup, getFireStore,
+  getPlaces, getAuth, getAuthStatus
+} from "./selectors.js";
 import Loader from "./loader.jsx";
 import AppRouter from "./app_router.jsx";
 import Navbar from "./nav_bar.jsx";
+import {useCollectionData} from "react-firebase-hooks/firestore";
+import firebase from "firebase";
+
 const App = (props) => {
   const {activeOffice, handlerClickOnChoise, activePage, activePlace, onPinClick,
-    places, handlerSubmitForAdd, getNewData, auth, signOut, authorizationStatus} = props;
-
+    places, handlerSubmitForAdd, firestore, getNewData, auth, signOut,
+    authorizationStatus} = props;
   // eslint-disable-next-line no-unused-vars
   const [user, loading, error] = useAuthState(auth);
+  // const [dbPlanning] = useCollectionData(
+  //     firestore.collection(activeOffice).orderBy(`id`)
+  // );
+  // console.log(activeOffice);
+  // console.log(dbPlanning);
+  // // if (places && authorizationStatus === `AUTH`) {
+  //   console.log(user.uid);
+
+  //   // console.log(dbPlanning.length);
+  //   places.forEach((element) => {
+  //     firestore.collection(activeOffice).add({
+  //       id: element.id,
+  //       titlle: element.titlle,
+  //       company: element.company,
+  //       departmens: element.departmens,
+  //       otdel: element.otdel,
+  //       gender: element.gender,
+  //       coordinateX: element.coordinateX,
+  //       coordinateY: element.coordinateY,
+  //       avatar: element.avatar,
+  //       timein: element.timein,
+  //       timeout: element.timeout,
+  //       description: element.description,
+  //       photo: element.photo,
+  //       notebook: element.notebook,
+  //       apllebook: element.apllebook,
+  //       sistemnik: element.sistemnik,
+  //       telephone: element.telephone,
+  //       createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+  //     });
+  //   });
+
+  // }
+
   if (loading) {
     return <Loader />;
   }
@@ -70,6 +110,7 @@ const mapStateToProps = (store) => {
     activePage: getActivePage(store),
     activePlace: getPopup(store),
     places: getPlaces(store),
+    firestore: getFireStore(store),
     auth: getAuth(store),
     authorizationStatus: getAuthStatus(store),
   };
@@ -86,6 +127,7 @@ App.propTypes = {
   places: PropTypes.array.isRequired,
   activePage: PropTypes.string.isRequired,
   activePlace: PropTypes.object,
+  firestore: PropTypes.object,
   auth: PropTypes.object.isRequired,
 };
 

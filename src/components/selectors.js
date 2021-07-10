@@ -11,6 +11,9 @@ const getActivePage = (state) => {
 const getPlaces = (state) => {
   return state[NameSpace.DATA].places;
 };
+const getFireStore = (state) => {
+  return state[NameSpace.USERS].firestore;
+};
 
 const getPopup = (state) => {
   return state[NameSpace.DATA].popup;
@@ -29,4 +32,5 @@ export {
   getPopup,
   getAuthStatus,
   getAuth,
+  getFireStore
 };

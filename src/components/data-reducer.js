@@ -1,6 +1,3 @@
-// import {
-//   workedPlaceOnOffice
-// } from "../const.js";
 
 import {
   onSortPins,
@@ -25,13 +22,14 @@ const ActionType = {
 // Объект начального состояния(state):
 const initialState = {
   page: `choisePage`,
-  office: null,
+  office: `null`,
   places: [],
   popup: null,
   originalPlaces: [],
   isDataLoaded: false,
   errorMessage: ``,
 };
+
 
 // запрос на сервер
 const Operation = {

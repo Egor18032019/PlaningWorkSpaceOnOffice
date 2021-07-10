@@ -1,32 +1,16 @@
 // Получение  данных c гугол форм
-
 const URL = {
   // POST: `https://docs.google.com/spreadsheets/d/1SGp1yxurXuCKLORjjn23pe5eeOCf10unp1diOnEx2xE/edit?usp=sharing`,
   POST: `https://sheets.googleapis.com/v4/spreadsheets/1SGp1yxurXuCKLORjjn23pe5eeOCf10unp1diOnEx2xE:batchUpdate`,
   // POST: `https://docs.google.com/spreadsheets/d/1SGp1yxurXuCKLORjjn23pe5eeOCf10unp1diOnEx2xE/edit?usp=sharing`,
 };
 // https://sheets.googleapis.com/v4/spreadsheets/AIzaSyACvURZ36YS0q1lcePVxO13mLWuu02uq6g/values/Sheet1!A1:B1?valueInputOption=USER_ENTERED`);
-const URLGET = {
-  "Ekaterinburg 300": `https://script.google.com/macros/s/AKfycbwTDGAUveZeTZN1SpWwZC4RY0nkHTZZBRksU2jeXg/exec`,
-  "Ekaterinburg 503": `https://script.google.com/macros/s/AKfycbxp4hNaJG3Lj1jzu-Tv0wBNyln4txmo-ZQPCMGA8O4y8vCGLdddSoGU/exec`,
-  "Ekaterinburg 801": `https://script.google.com/macros/s/AKfycby_hcQQ99DAAm1y7E8pZyKHc_OBu0spx94LPorq3m60qhrdPtcR/exec`,
-  "Ekaterinburg 901": `https://script.google.com/macros/s/AKfycbxlU4-ran0HBA9kFVPT0uh_xxZgHJU2PipOHWVZhcEJEJThaZuK/exec`,
-  "Ekaterinburg 803-816": `https://script.google.com/macros/s/AKfycbx4_-uDTCxQVRLhppd3Mtm8L_1-pzXDiQ5oeSa5jvC4qVtWm0TF/exec`,
-  "Ryazan": ``,
-  "Samara": ``,
-};
 
-/**
- * коды ошибок
- */
-const StatusCode = {
-  OK: 200
-};
 
+import {URLGET, StatusCode} from "../const.js";
 
 const onLoadForm = (place) => {
   const loadUrl = URLGET[place];
-  // console.log(loadUrl);
 
   return new Promise(function (resolve, reject) {
 
@@ -35,6 +19,7 @@ const onLoadForm = (place) => {
     xhr.open(`GET`, loadUrl, true);
     xhr.onload = function () {
       if (this.status === StatusCode.OK) {
+
         // если всё хорошо то вызываем у промиса метод резолве и в него передаем ответ сервера
         resolve(this.response);
       } else {
