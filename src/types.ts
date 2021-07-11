@@ -29,10 +29,13 @@ interface MainProps {
   activePlace: object,
   pinMainCoordinate: string,
   places: [],
+  authorizationStatus: string,
+  firestore:object,
+  auth: any //поправить !
 };
 
 interface AdFormProps {
-  handlerSubmitForAdd: ({}) => {},
+  handlerSubmitForAdd: ({ }) => {},
   pinMainCoordinate: string,
   isActive: boolean,
   coordinateX: number,

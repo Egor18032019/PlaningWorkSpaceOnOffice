@@ -1,10 +1,6 @@
-// import {
-//   workedPlaceOnOffice
-// } from "../const.js";
 
 import {
   onSortPins,
-  adapter
 } from "../utils.js";
 import {
   onLoadForm,
@@ -25,7 +21,7 @@ const ActionType = {
 // Объект начального состояния(state):
 const initialState = {
   page: `choisePage`,
-  office: null,
+  office: `null`,
   places: [],
   popup: null,
   originalPlaces: [],
@@ -33,12 +29,12 @@ const initialState = {
   errorMessage: ``,
 };
 
+
 // запрос на сервер
 const Operation = {
-  loadDataAsync: (place) => (dispatch) => {
-    return onLoadForm(place).then((response) => {
-      const data = adapter(response);
-      dispatch(ActionActive.getDataOffers(data));
+  loadDataAsync: (place, firestore) => (dispatch) => {
+    return onLoadForm(place, firestore).then((response) => {
+      dispatch(ActionActive.getDataOffers(response));
       dispatch(ActionActive.activeState(place));
       dispatch(setIdDataLoaded(true, ``));
     });
