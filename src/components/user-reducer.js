@@ -31,17 +31,6 @@ firebase.initializeApp({
 const auth = firebase.auth();
 auth.signOut();
 const firestore = firebase.firestore();
-// let docRef = firestore.collection(`Ekaterinburg_801`).get().then((querySnapshot) => {
-//   console.log(querySnapshot.docs);
-
-//   // querySnapshot.forEach((doc) => {
-//   //   // doc.data() is never undefined for query doc snapshots
-//   //   console.log(doc.id, ` => `, doc.data());
-//   // }
-//   // );
-// });
-
-
 
 // Объект начального состояния(state):
 const initialState = {

@@ -49,7 +49,7 @@ class ImportButton extends PureComponent {
         console.error(`Could not parse file`, err);
       }
     };
-    main();
+   main();
   }
 
   render() {

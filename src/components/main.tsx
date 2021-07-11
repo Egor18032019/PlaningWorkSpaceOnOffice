@@ -20,7 +20,7 @@ const Main = (props: MainProps) => {
   const { activeOffice, isActive, onChangeCoordinate, pinMainCoordinate, onChangeCoordinateY,
     onChangeCoordinateX, coordinateX, coordinateY, activePlace,
     onPinClick, places, handlerSubmitForAdd, handlerClickOnChoise, onClickActive, onMovePoint,
-    authorizationStatus, auth } = props;
+    authorizationStatus, auth,firestore } = props;
   const BGI = arrayBackGroundImage[activeOffice];
 
   const [user, loading, error] = useAuthState(auth);
@@ -38,6 +38,7 @@ const Main = (props: MainProps) => {
           <h1 className="promo__title visually-hidden">Планировщик рабочих мест.</h1>
           <ChoicePlaces
             onChoiseOfficeClick={handlerClickOnChoise}
+            firestore={firestore}
           />
           <CSVDowland
             activeOffice={activeOffice}

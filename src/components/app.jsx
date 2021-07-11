@@ -76,14 +76,15 @@ const App = (props) => {
         getNewData={getNewData}
         auth={auth}
         authorizationStatus={authorizationStatus}
+        firestore={firestore}
       />
     </BrowserRouter >
   );
 };
 
 const mapDispatchToTitle = (dispatch) => ({
-  handlerClickOnChoise(place) {
-    dispatch(Operation.loadDataAsync(place));
+  handlerClickOnChoise(place, firestore) {
+    dispatch(Operation.loadDataAsync(place, firestore));
   },
   signOut() {
     dispatch(OperationUser.signOut());

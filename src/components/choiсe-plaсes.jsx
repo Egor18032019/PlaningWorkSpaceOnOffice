@@ -10,10 +10,13 @@ import {Ekaterinburg_300,
   Samara, Ryazan} from "../const.js";
 const ChoicePlaces = (props) => {
   const menuRef = useRef();
+
   const handleSubmit = (evt)=> {
-    const {onChoiseOfficeClick} = props;
+    const {onChoiseOfficeClick, firestore} = props;
+    console.log(firestore);
+
     evt.preventDefault();
-    onChoiseOfficeClick(menuRef.current.value);
+    onChoiseOfficeClick(menuRef.current.value, firestore);
   };
 
   return (
@@ -35,6 +38,7 @@ const ChoicePlaces = (props) => {
 
 ChoicePlaces.propTypes = {
   onChoiseOfficeClick: PropTypes.func.isRequired,
+  firestore: PropTypes.object.isRequired,
 };
 
 

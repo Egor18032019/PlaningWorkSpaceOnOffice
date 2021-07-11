@@ -30,6 +30,7 @@ interface MainProps {
   pinMainCoordinate: string,
   places: [],
   authorizationStatus: string,
+  firestore:object,
   auth: any //поправить !
 };
 

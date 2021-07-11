@@ -13,7 +13,8 @@ import {LOGIN_ROUTE, PROP_ROUTE, OFFISE_STATE} from "../const.js";
 
 const AppRouter = (props) => {
   const {activeOffice, handlerClickOnChoise, activePage, activePlace, onPinClick,
-    places, handlerSubmitForAdd, getNewData, auth, authorizationStatus} = props;
+    places, handlerSubmitForAdd, getNewData, auth, firestore,
+    authorizationStatus} = props;
 
   return (
     <Switch>
@@ -31,12 +32,14 @@ const AppRouter = (props) => {
                 handlerClickOnChoise={handlerClickOnChoise}
                 auth={auth}
                 authorizationStatus={authorizationStatus}
+                firestore={firestore}
               />);
           }
           return (
             <div className="promo__choise">
               <ChoicePlaces
                 onChoiseOfficeClick={handlerClickOnChoise}
+                firestore={firestore}
               />
               <ImportButton
                 getNewData={getNewData}
