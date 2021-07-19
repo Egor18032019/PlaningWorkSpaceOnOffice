@@ -61,7 +61,7 @@ class AdForm extends React.PureComponent<AdFormProps, State> {
     const { handlerSubmitForAdd, coordinateX, coordinateY, firestore, activeOffice, places } = this.props;
     evt.preventDefault();
     const newPlace = {
-      id: this.idRef.current.value,
+      id: Number(this.idRef.current.value),
       titlle: this.titledRef.current.value,
       avatar: this.state.avatarPreviewUrl,
       company: this.type.current.value,
@@ -80,7 +80,7 @@ class AdForm extends React.PureComponent<AdFormProps, State> {
       coordinateY,
     }
 
-    onSavePlace(places, newPlace, firestore, activeOffice);
+     onSavePlace(places, newPlace, firestore, activeOffice);
 
     handlerSubmitForAdd(
       newPlace
@@ -168,7 +168,7 @@ class AdForm extends React.PureComponent<AdFormProps, State> {
         </fieldset>
         <fieldset className="ad-form__element ad-form__element--wide">
           <label className="ad-form__label" htmlFor="address">Номер рабочего места</label>
-          <input id="address" name="address" type="text" required ref={this.idRef} />
+          <input id="address" name="address" type="number" required ref={this.idRef} />
         </fieldset>
         <fieldset className="ad-form__element">
           <label className="ad-form__label" htmlFor="type">Тип организации</label>
