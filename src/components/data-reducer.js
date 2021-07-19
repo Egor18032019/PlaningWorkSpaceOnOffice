@@ -21,7 +21,7 @@ const ActionType = {
 // Объект начального состояния(state):
 const initialState = {
   page: `choisePage`,
-  office: `null`,
+  office: ``,
   places: [],
   popup: null,
   originalPlaces: [],
