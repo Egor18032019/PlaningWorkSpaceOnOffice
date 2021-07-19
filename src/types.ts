@@ -36,10 +36,13 @@ interface MainProps {
 
 interface AdFormProps {
   handlerSubmitForAdd: ({ }) => {},
+  firestore:any,
+  activeOffice:string,
   pinMainCoordinate: string,
   isActive: boolean,
   coordinateX: number,
   coordinateY: number,
+  places:any // исправить
 };
 
 export {

@@ -77,6 +77,7 @@ const dataReducer = (state = initialState, action) => {
         stateDataRewriteArray.push(newPlace);
       }
 
+
       return Object.assign({}, state, {
         places: stateDataRewriteArray
       });

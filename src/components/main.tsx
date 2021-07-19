@@ -96,6 +96,9 @@ const Main = (props: MainProps) => {
             coordinateY={coordinateY}
             coordinateX={coordinateX}
             handlerSubmitForAdd={handlerSubmitForAdd}
+            firestore={firestore}
+            activeOffice={activeOffice}
+            places={places}
           />
         </section>
         :

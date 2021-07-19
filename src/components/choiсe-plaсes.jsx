@@ -13,8 +13,6 @@ const ChoicePlaces = (props) => {
 
   const handleSubmit = (evt)=> {
     const {onChoiseOfficeClick, firestore} = props;
-    console.log(firestore);
-
     evt.preventDefault();
     onChoiseOfficeClick(menuRef.current.value, firestore);
   };

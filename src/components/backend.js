@@ -1,10 +1,3 @@
-// Получение  данных c гугол форм
-const URL = {
-  // POST: `https://docs.google.com/spreadsheets/d/1SGp1yxurXuCKLORjjn23pe5eeOCf10unp1diOnEx2xE/edit?usp=sharing`,
-  POST: `https://sheets.googleapis.com/v4/spreadsheets/1SGp1yxurXuCKLORjjn23pe5eeOCf10unp1diOnEx2xE:batchUpdate`,
-  // POST: `https://docs.google.com/spreadsheets/d/1SGp1yxurXuCKLORjjn23pe5eeOCf10unp1diOnEx2xE/edit?usp=sharing`,
-};
-
 
 import {URLGET, StatusCode} from "../const.js";
 
@@ -13,12 +6,37 @@ const onLoadForm = async (place, firestore) => {
   .then((querySnapshot) => {
     let places = [];
     querySnapshot.forEach((doc) => {
-      places.push(doc.data());
+      let dateWithFirebaseId = doc.data();
+      dateWithFirebaseId[`fid`] = doc.id;
+      places.push(dateWithFirebaseId);
     }
     );
     return places;
     // добавь фильтр через then что бы id отображалась
+  }).then((response)=>{
+    const sortResponse = response.sort((a, b) =>{
+      return a.id - b.id;
+    });
+    return sortResponse;
   });
+
+};
+
+const onSavePlace = async (oldPlaces, newPlace, firestore, activeOffice)=>{
+  let index = oldPlaces.findIndex((it) =>{
+    return it.id === newPlace.id;
+  });
+
+  if (index > -1) {
+    firestore.collection(activeOffice).doc(oldPlaces[index].fid).delete().then(() => {
+      console.log(`Document successfully deleted!`);
+    }).catch((error) => {
+      console.error(`Error removing document: `, error);
+    });
+  } else {
+    // Add a new document with a generated id.
+    firestore.collection(activeOffice).doc().set(newPlace);
+  }
 };
 // загрузка с гугол табел
 // + добавить в loadDataAsync
@@ -53,5 +71,5 @@ const onLoadFormOld = (place) => {
 
 export {
   onLoadForm,
-
+  onSavePlace
 };

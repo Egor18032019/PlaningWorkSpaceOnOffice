@@ -2,7 +2,7 @@
 import * as React from "react";
 
 import { AdFormProps } from "../types";
-import { save } from "../components/backend"
+import { onSavePlace } from "../components/backend.js"
 interface State {
   avatar: number | null,
   avatarPreviewUrl: string | ArrayBuffer,
@@ -58,29 +58,32 @@ class AdForm extends React.PureComponent<AdFormProps, State> {
 
 
   handleSubmit(evt) {
-    const { handlerSubmitForAdd, coordinateX, coordinateY } = this.props;
+    const { handlerSubmitForAdd, coordinateX, coordinateY, firestore, activeOffice, places } = this.props;
     evt.preventDefault();
-    save()
+    const newPlace = {
+      id: this.idRef.current.value,
+      titlle: this.titledRef.current.value,
+      avatar: this.state.avatarPreviewUrl,
+      company: this.type.current.value,
+      departmens: this.departmens.current.value,
+      timein: this.timein.current.value,
+      timeout: this.timeout.current.value,
+      otdel: this.otdel.current.value,
+      gender: this.gender.current.value,
+      notebook: this.notebook.current.checked,
+      apllebook: this.notebook.current.checked,
+      sistemnik: this.notebook.current.checked,
+      telephone: this.notebook.current.checked,
+      description: this.description.current.value,
+      photo: this.state.photoPreviewUrl,
+      coordinateX,
+      coordinateY,
+    }
+
+    onSavePlace(places, newPlace, firestore, activeOffice);
+
     handlerSubmitForAdd(
-      {
-        id: this.idRef.current.value,
-        titlle: this.titledRef.current.value,
-        avatar: this.state.avatarPreviewUrl,
-        company: this.type.current.value,
-        departmens: this.departmens.current.value,
-        timein: this.timein.current.value,
-        timeout: this.timeout.current.value,
-        otdel: this.otdel.current.value,
-        gender: this.gender.current.value,
-        notebook: this.notebook.current.checked,
-        apllebook: this.notebook.current.checked,
-        sistemnik: this.notebook.current.checked,
-        telephone: this.notebook.current.checked,
-        description: this.description.current.value,
-        photo: this.state.photoPreviewUrl,
-        coordinateX,
-        coordinateY,
-      }
+      newPlace
     );
   }
 
@@ -155,7 +158,7 @@ class AdForm extends React.PureComponent<AdFormProps, State> {
               <label className="ad-form-header__drop-zone" htmlFor="avatar">Загрузить фото...</label>
             </div>
             <p className="ad-form-header__info">Заполните все обязательные поля.
-        Получившееся объявление должно давать коллегам полное представление о новом сотруднике</p>
+              Получившееся объявление должно давать коллегам полное представление о новом сотруднике</p>
           </div>
         </fieldset>
         <fieldset className="ad-form__element ad-form__element--wide">
@@ -254,7 +257,7 @@ class AdForm extends React.PureComponent<AdFormProps, State> {
         </fieldset>
         <fieldset className="ad-form__element ad-form__element--submit">
           <button className="ad-form__submit" type="submit" onClick={this.handleSubmit}>Опубликовать</button>
-    или <button className="ad-form__reset" type="reset" onClick={this._handleReset}>очистить</button>
+          или <button className="ad-form__reset" type="reset" onClick={this._handleReset}>очистить</button>
         </fieldset>
       </form>
     );
