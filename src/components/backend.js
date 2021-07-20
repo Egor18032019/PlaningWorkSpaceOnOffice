@@ -27,18 +27,18 @@ const onLoadForm = async (activeOffice, firestore) => {
  * @param {*} activeOffice какой именно этаж
  */
 const onSavePlace = async (oldPlaces, newPlace, firestore, activeOffice)=>{
+  // Add a new document with a generated id.
+  firestore.collection(activeOffice).doc().set(newPlace);
   let index = oldPlaces.findIndex((it) =>{
     return it.id === newPlace.id;
   });
   if (index > -1) {
-    firestore.collection(activeOffice).doc(oldPlaces[index].fid).delete().then(() => {
+    firestore.collection(activeOffice).doc(oldPlaces[index].fid).delete()
+    .then(() => {
       console.log(`Document successfully deleted!`);
     }).catch((error) => {
       console.error(`Error removing document: `, error);
     });
-  } else {
-    // Add a new document with a generated id.
-    firestore.collection(activeOffice).doc().set(newPlace);
   }
 };
 

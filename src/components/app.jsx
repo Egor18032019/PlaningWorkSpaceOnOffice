@@ -12,8 +12,7 @@ import {
 import Loader from "./loader.jsx";
 import AppRouter from "./app_router.jsx";
 import Navbar from "./nav_bar.jsx";
-import {useCollectionData} from "react-firebase-hooks/firestore";
-import firebase from "firebase";
+
 
 const App = (props) => {
   const {activeOffice, handlerClickOnChoise, activePage, activePlace, onPinClick,
@@ -21,39 +20,6 @@ const App = (props) => {
     authorizationStatus} = props;
   // eslint-disable-next-line no-unused-vars
   const [user, loading, error] = useAuthState(auth);
-  // const [dbPlanning] = useCollectionData(
-  //     firestore.collection(activeOffice).orderBy(`id`)
-  // );
-  // console.log(activeOffice);
-  // console.log(dbPlanning);
-  // // if (places && authorizationStatus === `AUTH`) {
-  //   console.log(user.uid);
-
-  //   // console.log(dbPlanning.length);
-  //   places.forEach((element) => {
-  //     firestore.collection(activeOffice).add({
-  //       id: element.id,
-  //       titlle: element.titlle,
-  //       company: element.company,
-  //       departmens: element.departmens,
-  //       otdel: element.otdel,
-  //       gender: element.gender,
-  //       coordinateX: element.coordinateX,
-  //       coordinateY: element.coordinateY,
-  //       avatar: element.avatar,
-  //       timein: element.timein,
-  //       timeout: element.timeout,
-  //       description: element.description,
-  //       photo: element.photo,
-  //       notebook: element.notebook,
-  //       apllebook: element.apllebook,
-  //       sistemnik: element.sistemnik,
-  //       telephone: element.telephone,
-  //       createdAt: firebase.firestore.FieldValue.serverTimestamp(),
-  //     });
-  //   });
-
-  // }
 
   if (loading) {
     return <Loader />;

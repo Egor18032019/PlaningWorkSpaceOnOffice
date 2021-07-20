@@ -33,11 +33,14 @@ const initialState = {
 // запрос на сервер
 const Operation = {
   loadDataAsync: (place, firestore) => (dispatch) => {
+    console.log(place === true);
     return onLoadForm(place, firestore).then((response) => {
       dispatch(ActionActive.getDataOffers(response));
-      dispatch(ActionActive.activeState(place));
       dispatch(setIdDataLoaded(true, ``));
-    });
+    }).then(()=>{
+      dispatch(ActionActive.activeState(place));
+    }
+    );
   }
 };
 
