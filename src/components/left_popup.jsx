@@ -150,6 +150,8 @@ const LeftPopup = (props) => {
                 <option value="Корус">Корус</option>
                 <option value="ПОС">ПОС</option>
                 <option value="Масс">Масс</option>
+                <option value="КАШ">КАШ</option>
+                <option value="Тест">Тест</option>
               </select>
             </fieldset>
             <fieldset className="popup-form__element" disabled={!isActive} title="Переезд или Остаёться">

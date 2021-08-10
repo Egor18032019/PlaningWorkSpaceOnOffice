@@ -17,6 +17,9 @@ const onLoadForm = async (activeOffice, firestore) => {
     );
     return places;
     // добавь фильтр через then что бы id отображалась
+  })
+  .catch((error) => {
+    console.error(`Error loading document: `, error);
   });
 };
 /**

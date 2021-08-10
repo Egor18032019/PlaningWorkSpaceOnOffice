@@ -1,7 +1,7 @@
 import React from 'react';
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
-import {Button, Grid, Avatar} from "@material-ui/core";
+import {Button, Grid, Avatar, Container} from "@material-ui/core";
 import PropTypes from "prop-types";
 import {NavLink} from "react-router-dom";
 import {LOGIN_ROUTE} from "../const.js";
@@ -28,18 +28,21 @@ const Navbar = (props) => {
           </Grid>
         </Toolbar>
         :
-        <Toolbar container="true" variant={`dense`}>
-          <Grid container justify={`flex-start`}>
-            <NavLink container="true" to={`/`} style={{background: `lightgray`, border: `none`, boxShadow: `none`}}>
-              <Button size={`small`} variant={`contained`} style={{width: `144px`}}>Главное меню</Button>
-            </NavLink>
-          </Grid>
-          <Grid container justify={`flex-end`}>
-            <NavLink container="true" to={LOGIN_ROUTE} style={{background: `lightgray`, border: `none`, boxShadow: `none`}}>
-              <Button variant={`contained`} size={`small`}>Логин</Button>
-            </NavLink>
-          </Grid>
-        </Toolbar>
+        <Container fixed>
+          <Toolbar container="true" variant={`dense`}>
+
+            <Grid container justify={`flex-start`}>
+              <NavLink container="true" to={`/`} style={{background: `lightgray`, border: `none`, boxShadow: `none`}}>
+                <Button size={`small`} variant={`contained`} style={{width: `144px`}}>Главное меню</Button>
+              </NavLink>
+            </Grid>
+            <Grid container justify={`flex-end`}>
+              <NavLink container="true" to={LOGIN_ROUTE} style={{background: `lightgray`, border: `none`, boxShadow: `none`}}>
+                <Button variant={`contained`} size={`small`}>Логин</Button>
+              </NavLink>
+            </Grid>
+          </Toolbar>
+        </Container>
       }
     </AppBar >
   );
